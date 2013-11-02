@@ -1854,8 +1854,6 @@ $(function () {
             var normalFeaturesString = '', specFeaturesString = '',
                 attrList = data.attrList;
 
-            console.log(data);
-
             for (var i in attrList) {
                 var featuresString = '';
                     feature = attrList[i];
@@ -1960,6 +1958,7 @@ $(function () {
         var numFormat = 16,
             attr = '';
 
+        /*
         var handleProItem = function (index, element) {
             var $e = $(element),
                 $firstInput = $e.find('input:first').length == 0 ? $e.find('select:first') : $e.find('input:first'),
@@ -1983,6 +1982,7 @@ $(function () {
         };
 
         $('.product-props .pro-item').each(handleProItem);
+        */
 
         document.mainform.submit();
     });

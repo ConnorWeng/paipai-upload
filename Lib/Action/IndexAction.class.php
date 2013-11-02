@@ -5,21 +5,26 @@ import('@.Util.OpenAPI');
 class IndexAction extends Action {
 
     public function index() {
-        header('location: http://fuwu.paipai.com/my/app/authorizeGetAccessToken.xhtml?responseType=access_token&appOAuthID='.C('appOAuthId'));
+        $this->display();
+    }
+
+    public function auth() {
+        session('paipai_current_taobao_id', I('taobaoItemId'));
+        if (!session('?paipai_access_token')) {
+            header('location: http://fuwu.paipai.com/my/app/authorizeGetAccessToken.xhtml?responseType=access_token&appOAuthID='.C('appOAuthId'));
+        } else {
+            U('Index/authBack', array(), true, true, false);
+        }
     }
 
     public function authBack() {
-        if (!session('?access_token')) {
-            session('access_token', I('?access_token'));
+        if (!session('?paipai_access_token')) {
+            session('paipai_access_token', I('?access_token'));
             session('uin', I('useruin'));
             session('sign', I('sign'));
         }
 
-        $this->display();
-    }
-
-    public function navigation() {
-        $taobaoItemId = I('taobaoItemId');
+        $taobaoItemId = session('paipai_current_taobao_id');
         $taobaoItem = OpenAPI::getTaobaoItem($taobaoItemId);
 
         $this->assign(array(
@@ -88,7 +93,7 @@ class IndexAction extends Action {
             /* end */
 
             if ($uploadResult->errorCode == 0) {
-                $this->success('发布成功', U('Index/authBack'));
+                $this->success('发布成功', U('Index/index'));
             } else {
                 $this->error('商品发布成功，但图片上传失败: errorCode:'.$uploadResult->errorCode.', errorMessage:'.$uploadResult->errorMessage, '', 3);
             }
