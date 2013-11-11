@@ -12,7 +12,7 @@
 <body>
 <form name="mainform" class="mainform" action="{:U('Index/addItem')}" method="POST">
 <input type="hidden" name="stockPrice" value="{$stockPrice}">
-<input type="hidden" name="productFeatures" id="productFeatures"/>
+<input type="hidden" name="attr" id="attr"/>
 <input type="hidden" name="skuList" id="skuList"/>
     <div id="doc"
         data-doc-config='{"isProcessing":"false","offerScoreUrl":"http://offer.1688.com/offer/increment/calculate_score.htm?_input_charset=UTF-8","draftSubmitUrl":"http://offer.1688.com/offer/draft/save.htm?_input_charset=UTF-8","submitUrl":"http://offer.1688.com/offer/post/fill_product_info.htm","submitData":{"_widget_data_post_":true,"site":"","featureFilter":false,"catType":"0","_csrf_token":"3a1203d336ab038359e9f952a3a038b0","action":"OfferPostAction","offerDraftId":"","tradeType":"1","topCategoryId":"3","secondCategoryId":"10166","thirdCategoryId":"1031919","operator":"new","fromWhere":"","adGroupId":"","productId":""}}'>
@@ -1876,7 +1876,7 @@ $(function () {
                         featuresString += '<select name="feature' + feature.attrId + '" id="' + feature.attrId + '">';
                         for (var j in feature.optionList) {
                             var option = feature.optionList[j];
-                            featuresString += '<option value="' + option.optionValue + '">' + option.optionValue + '</option>';
+                            featuresString += '<option value="' + option.optionId + '">' + option.optionValue + '</option>';
                         }
 
                         featuresString += '</select>';
@@ -1886,7 +1886,7 @@ $(function () {
                             var option = feature.optionList[j];
 
                             featuresString += '<span class="span-item span-item-ipt">';
-                            featuresString += '<input class="ipt" type="checkbox" name="feature' + feature.attrId + '" id="pro-feature' + feature.attrId + '-' + j + '" value="' + option.optionValue + '" />';
+                            featuresString += '<input class="ipt" type="checkbox" name="feature' + feature.attrId + '" id="' + option.optionId + '" value="' + option.optionValue + '" />';
                             featuresString += '<label for="pro-feature' + feature.attrId + '-' + j + '">' + option.optionValue + '</label>';
                             featuresString += '</span>';
                         }
@@ -1956,33 +1956,44 @@ $(function () {
 
     $('.publish-btn').on('click', function offer() {
         var numFormat = 16,
-            attr = '';
+            custAttrString = '',
+            attrString = '';
 
-        /*
+        // FIXME: 没有考虑custom属性
         var handleProItem = function (index, element) {
             var $e = $(element),
                 $firstInput = $e.find('input:first').length == 0 ? $e.find('select:first') : $e.find('input:first'),
                 fid = $firstInput.attr('name').substr(7),
-                valueString = '',
-                featureString = '';
+                txt = 0;
 
-            if ($firstInput.attr('type') == 'checkbox') {
+            if ($firstInput.attr('type') == 'text') {
+                if ($firstInput.val() != '') {
+                    custAttrString = custAttrString + (1*fid).toString(numFormat) + ':' + $firstInput.val() + '|';
+                    attrString = attrString + (1*fid).toString(numFormat) + ':1|';
+                }
+            } else if ($firstInput.attr('type') == 'checkbox') {
+                var pAttr = (1 * fid).toString(numFormat) + ':';
                 $e.find('input').each(function (i, e) {
                     if (e.checked) {
-                        valueString += e.value + '、';
+                        var id = e.id;
+                        txt = txt + Math.pow(2, id - 1);
                     }
                 });
-                valueString = valueString.substr(0, valueString.length - 1);
+                if (1 * txt != 0) {
+                    attrString = attrString + (1*fid).toString(numFormat) + ':' + (1*txt).toString(numFormat) + '|';
+                }
             } else {
-                valueString = $firstInput.val();
+                attrString = attrString + (1*fid).toString(numFormat) + ':' + (1*$firstInput.val()).toString(numFormat) + '|';
             }
-
-            featureString = '"' + fid + '":"' + valueString + '",';
-            productFeatures += featureString;
         };
 
         $('.product-props .pro-item').each(handleProItem);
-        */
+
+        if (attrString != '') {
+            attrString = attrString.substring(0, attrString.length - 1);
+        }
+
+        $('#attr').val(attrString);
 
         document.mainform.submit();
     });

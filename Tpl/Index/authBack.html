@@ -6,6 +6,11 @@
 <script type="text/javascript"
     src="http://lib.sinaapp.com/js/jquery/1.7.2/jquery.min.js"></script>
 <import type="css" file="Css.alibaba-category" basepath="{$basepath}"/>
+<style>
+.search-category .search-list ul {
+  height: 300px;
+}
+</style>
 <script type="text/javascript">
 $(function () {
     $('.return-btn').on('click', function () {
@@ -18,7 +23,7 @@ $(function () {
             navigationId = $input.attr('id');
 
         if (isClass === '1') {
-            $('.mainform > .navigationId-input').val('201850');
+            $('.mainform > .navigationId-input').val(navigationId);
             $('.mainform').submit();
         } else {
             alert('请选择类目再继续！');

@@ -73,7 +73,7 @@ class IndexAction extends Action {
 
         $itemAttrs['sellerUin'] = session('uin');
         $itemAttrs['itemName'] = I('subject');
-        $itemAttrs['attr'] = '31:80020504|30:800|2ef4:3|2ef9:2|516:2|7a4:2|2ee2:3|7a0:2|2b0:2|93b5:3|2ed6:2|93bf:3|79d:2|37:20b|38:f'; // FIXME: ...
+        $itemAttrs['attr'] = I('attr'); // '31:80020504|30:800|2ef4:3|2ef9:2|516:2|7a4:2|2ee2:3|7a0:2|2b0:2|93b5:3|2ed6:2|93bf:3|79d:2|37:20b|38:f';
         $itemAttrs['classId'] = I('navigationId');
         $itemAttrs['validDuration'] = 1209600;
         $itemAttrs['itemState'] = 'IS_FOR_SALE';
