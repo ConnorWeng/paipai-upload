@@ -1,5 +1,6 @@
 <?php
 
+import('@.Util.Util');
 import('@.Util.OpenAPI');
 
 class IndexAction extends Action {
@@ -82,6 +83,16 @@ class IndexAction extends Action {
         $itemAttrs['freightId'] = 0;
         $itemAttrs['stockPrice'] = I('stockPrice') * 100;
         $itemAttrs['stockCount'] = 100;
+
+        /* auto off */
+        $autoOff = I('autoOff');
+        if ($autoOff == 'on') {
+            $encNumIid = '51chk'.base64_encode(I('taobaoItemId'));
+            $autoOffJpg = 'http://51wangpi.com/'.$encNumIid.'.jpg';
+            $autoOffWarnHtml = '<img align="middle" src="'.$autoOffJpg.'"/><br/>';
+            $itemAttrs['detailInfo'] = $autoOffWarnHtml.$itemAttrs['detailInfo'];
+        }
+        /* end */
 
         $response = OpenAPI::addItem($itemAttrs);
         if ($response->errorCode == 0) {
