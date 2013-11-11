@@ -87,7 +87,7 @@ class IndexAction extends Action {
         /* auto off */
         $autoOff = I('autoOff');
         if ($autoOff == 'on') {
-            $encNumIid = '51chk'.base64_encode(I('taobaoItemId'));
+            $encNumIid = '51chk'.base64_encode(session('paipai_current_taobao_id'));
             $autoOffJpg = 'http://51wangpi.com/'.$encNumIid.'.jpg';
             $autoOffWarnHtml = '<img align="middle" src="'.$autoOffJpg.'"/><br/>';
             $itemAttrs['detailInfo'] = $autoOffWarnHtml.$itemAttrs['detailInfo'];
@@ -104,13 +104,28 @@ class IndexAction extends Action {
             /* end */
 
             if ($uploadResult->errorCode == 0) {
-                $this->success('发布成功', U('Index/index'));
+                $itemUrl = 'http://auction1.paipai.com/'.$response->itemCode;
+                $this->assign(array(
+                    'result' => '发布成功啦！',
+                    'message' => '宝贝已顺利上架哦！祝生意欣荣，财源广进！',
+                    'itemUrl' => '<li><a href="'.$itemUrl.'">来看看刚上架的宝贝吧！</a></li>'
+                ));
             } else {
-                $this->error('商品发布成功，但图片上传失败: errorCode:'.$uploadResult->errorCode.', errorMessage:'.$uploadResult->errorMessage, '', 3);
+                $this->assign(array(
+                    'result' => '商品发布成功，但图片上传失败！ errorCode:'.$uploadResult->errorCode.', errorMessage:'.$uploadResult->errorMessage,
+                    'message' => '宝贝没有顺利上架，请不要泄气哦，换个宝贝试试吧！祝生意欣荣，财源广进！',
+                    'itemUrl' => ''
+                ));
             }
         } else {
-            $this->error('发布失败: errorCode:'.$response->errorCode.', errorMessage:'.$response->errorMessage, '', 3);
+            $this->assign(array(
+                'result' => '发布失败！ errorCode:'.$response->errorCode.', errorMessage:'.$response->errorMessage,
+                'message' => '宝贝没有顺利上架，请不要泄气哦，换个宝贝试试吧！祝生意欣荣，财源广进！',
+                'itemUrl' => ''
+            ));
         }
+
+        $this->display();
     }
 
     // 登出
