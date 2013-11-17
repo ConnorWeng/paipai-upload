@@ -58,7 +58,7 @@ class OpenAPI {
         return self::invoke($sdk);
     }
 
-    public static function modifyItemPic($uin, $itemCode, $pic) {
+    public static function modifyItemPic($uin, $itemCode, $index, $pic) {
         $sdk = self::getSdk();
         $sdk->setApiPath('/item/modifyItemPic.xhtml');
         $params = &$sdk->getParams();
@@ -70,6 +70,7 @@ class OpenAPI {
         $params['pureData'] = 1;
         $params['sellerUin'] = $uin;
         $params['itemCode'] = $itemCode;
+        $params['index'] = $index;
         $sign = $sdk->makeSign($sdk->getMethod(), $sdk->getAppOAuthkey()."&");
         $params['sign'] = $sign;
 
@@ -113,7 +114,7 @@ class OpenAPI {
         $c->appkey = C('taobao_app_key');
         $c->secretKey = C('taobao_secret_key');
         $req = new ItemGetRequest;
-        $req->setFields("title,desc,pic_url,sku,item_weight,property_alias,price");
+        $req->setFields("title,desc,pic_url,sku,item_weight,property_alias,price,item_img.url");
         $req->setNumIid($numIid);
         $resp = $c->execute($req, null);
 

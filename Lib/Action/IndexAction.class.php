@@ -61,6 +61,7 @@ class IndexAction extends Action {
             'infoTitle' => $title,
             'offerWeight' => '0.2',
             'picUrl' => $taobaoItem->pic_url,
+            'itemImgs' => json_encode(Util::parseItemImgs($taobaoItem->item_imgs->item_img)),
             'offerDetail' => $taobaoItem->desc,
             'stockPrice' => $taobaoItem->price,
             'khn' => $khn
@@ -122,14 +123,24 @@ class IndexAction extends Action {
 
         $response = OpenAPI::addItem($itemAttrs);
         if ($response->errorCode == 0) {
-            /* download image */
-            $picUrl = $_REQUEST['picUrl'];
-            $localImageFile = '@'.OpenAPI::downloadImage($picUrl);
-            $uploadResult = OpenAPI::modifyItemPic(session('uin'), $response->itemCode, $localImageFile);
-            unlink(substr($localImageFile,1));
+            /* upload image */
+            $uploadImgErrorCode = 0;
+            $uploadImgErrorMsg = '';
+            for ($i = 1; $i <= 3; $i += 1) { // 因为一共三个input: pictureUrl1,pictureUrl2,pictureUrl3
+                $picUrl = $_REQUEST['pictureUrl'.$i];
+                if ($picUrl != '') {
+                    $localImageFile = '@'.OpenAPI::downloadImage($picUrl);
+                    $uploadResult = OpenAPI::modifyItemPic(session('uin'), $response->itemCode, $i - 1, $localImageFile);
+                    unlink(substr($localImageFile,1));
+                    if ($uploadResult->errorCode != 0) {
+                        $uploadImgErrorCode = $uploadResult->errorCode;
+                        $uploadImgErrorMsg = $uploadResult->errorMessage;
+                    }
+                }
+            }
             /* end */
 
-            if ($uploadResult->errorCode == 0) {
+            if ($uploadImgErrorCode == 0) {
                 $itemUrl = 'http://auction1.paipai.com/'.$response->itemCode;
                 $this->assign(array(
                     'result' => '发布成功啦！',
@@ -138,7 +149,7 @@ class IndexAction extends Action {
                 ));
             } else {
                 $this->assign(array(
-                    'result' => '商品发布成功，但图片上传失败！ errorCode:'.$uploadResult->errorCode.', errorMessage:'.$uploadResult->errorMessage,
+                    'result' => '商品发布成功，但图片上传失败！ errorCode:'.$uploadImgErrorCode.', errorMessage:'.$uploadImgErrorMsg,
                     'message' => '宝贝没有顺利上架，请不要泄气哦，换个宝贝试试吧！祝生意欣荣，财源广进！',
                     'itemUrl' => ''
                 ));
