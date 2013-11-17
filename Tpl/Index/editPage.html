@@ -1977,6 +1977,10 @@ $(function () {
     */
 
     $('.publish-btn').on('click', function offer() {
+        if (!validate()) {
+            return;
+        }
+
         var numFormat = 16,
             custAttrString = '',
             attrString = '';
