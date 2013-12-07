@@ -1,48 +1,410 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title></title>
-<script type="text/javascript"
-    src="http://lib.sinaapp.com/js/jquery/1.7.2/jquery.min.js"></script>
-<import type="css" file="Css.alibaba-category" basepath="{$basepath}"/>
-<style>
-.search-category .search-list ul {
-  height: 300px;
-}
-</style>
-<script type="text/javascript">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>选择商品分类</title>
+    <meta http-equiv="pragma" content="no-cache" />
+    <meta name="description" content="拍拍网，腾讯旗下快乐、时尚和共享的电子商务网站，让沟通促成交易!" />
+    <meta name="keywords" content="网上购物,网上开店,网上商城" />
+    <link rel="icon" href="http://pics.paipai.com/favicon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="http://pics.paipai.com/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="http://static.paipaiimg.com/css/heads.css?t=ver_2_20110426" type="text/css" media="screen" />
+    <link rel="stylesheet" href="http://static.paipaiimg.com/module/flow_step_v2.css"  type="text/css" media="screen" />
+    <link media="screen" type="text/css" href="http://static.paipaiimg.com/css/heads.css?t=ver_2_20101112" rel="stylesheet"/>
+    <link media="screen" type="text/css" href="http://static.paipaiimg.com/module/flow_step.css" rel="stylesheet"/>
+    <link media="screen" type="text/css" href="http://static.paipaiimg.com/module/msg_tips.css" rel="stylesheet"/>
+    <link media="screen" type="text/css" href="http://static.paipaiimg.com/upload/upload_choose_sort.css" rel="stylesheet"/>
+    <style>
+    .wp_category_list {
+      padding: 0px;
+    }
+    .sort_title span {
+      font-weight: normal;
+    }
+    .wp_search_com .txt input {
+      font-size: 12px;
+    }
+    </style>
+    <script type="text/javascript"
+            src="http://lib.sinaapp.com/js/jquery/1.7.2/jquery.min.js"></script>
+  </head>
+  <body>
+    <form class="mainform fd-hide" action="{:U('Index/editPage')}" method="POST">
+        <input type="hidden" class="navigationId-input" name="navigationId"/>
+        <input type="hidden" class="taobaoItemId-input" name="taobaoItemId" value="{$taobaoItemId}"/>
+    </form>
+    <!-- s inc_first_head_sim -->
+    <!--div class="pp_toolbar" id="pp_toolbar">
+        <div class="m">
+          <div class="pp_buy_sell">
+            <a class="buy" href="http://search.paipai.com/?PTAG=20060.1.1">我要买</a>
+            <a href="http://my.paipai.com/cgi-bin/sell?PTAG=20060.1.2">我要卖</a>
+            <a href="http://my.paipai.com/cgi-bin/userauth_show?PTAG=20060.1.3">免费开店</a>
+          </div>
+          <ul class="pp_site_link">
+            <li class="login" id="headLogin">您好，欢迎来拍拍！<a href="http://member.paipai.com/cgi-bin/login_entry?PTAG=20060.1.4">登录</a>　<a href="http://chs.reg.qq.com/?PTAG=20060.1.5">免费注册</a></li>
+            <li id="sellerPlan" style="display:none"><a href="http://seller.paipai.com/?PTAG=20060.1.19">卖家经营中心</a></li>
+            <li><a href="http://search.paipai.com/?PTAG=20084.1.6">我要买</a></li>
+            <li class="my_admin" id = "myPPLi">
+              <p><a href="http://my.paipai.com/cgi-bin/myppindex/entry?PTAG=3.1.14">我的拍拍</a><span id="myPPSpan" class="pp_arrd"></span></p>
+              <div class="now h" id = "myPPList">
+                <ul>
+                  <li><a href="http://my.paipai.com/cgi-bin/trade_deal_list/boughtentry?isBuyLink=01&amp;PTAG=20084.1.10">购买的商品</a></li>
+                  <li><a href="http://my.paipai.com/cgi-bin/favorite_new/Entry?type=item&amp;PTAG=20084.1.29">收藏的商品</a></li>
+                  <li><a href="http://my.paipai.com/cgi-bin/favorite_new/Entry?type=shop&amp;PTAG=20084.1.30">收藏的店铺</a></li>
+                </ul>
+              </div>
+            </li>
+            <li id="shopCarHead"><a href="http://auction.paipai.com/cgi-bin/shopcart/detail?PTAG=20060.1.18">购物车</a></li>
+            <li><a target="_blank" href="http://service.paipai.com/cgi-bin/go?pageId=20084&domainId=1&linkId=13&url=http://pay.paipai.com/cgi-bin/tenpay/Jump2tenpay">财付通</a></li>
+            <li class="help" id = "helpLi">
+              <p><a href="http://help.paipai.com/index.shtml?PTAG=20084.1.15">帮助</a><span id="helpSpan" class="pp_arrd"></span></p>
+              <div class="now h" id = "helpList">
+                <ul>
+                  <li><a href="http://guize.paipai.com/" target="_blank">规则平台</a></li>
+                  <li><a href="http://help.paipai.com/index.shtml?PTAG=20084.1.15">帮助中心</a></li>
+                  <li><a href="http://service.qq.com/category/paipai.html?PTAG=20084.1.20">客服专区</a></li>
+                  <li><a href="http://www.paipai.com/trust/plan/index.shtml?tab=6&amp;PTAG=30072.4.8">交易安全</a></li>
+                  <li><a href="http://www.paipai.com/COD/intro/seller.html?PTAG=20084.1.58">货到付款</a></li>
+                  <li><a href="http://qgo.qq.com/index.html?PTAG=20084.1.21">手机拍拍</a></li>
+                  <li><a href="http://www.paipai.com/college/?PTAG=20084.1.17">拍拍大讲堂</a></li>
+                  <li><a href="http://daxue.qq.com/ecc/?PTAG=20084.1.18" target="_blank">电商学院</a></li>
+                  <li><a href="http://my.paipai.com/cgi-bin/right_defence_entry?PTAG=20084.1.16">维权中心</a></li>
+                </ul>
+              </div>
+            </li>
+
+            <li><a href="http://bbs.paipai.com/portal.php?PTAG=20084.1.14">社区</a></li>
+            <li><a href="http://shop.qq.com/zhaoshang/?PTAG=20084.1.26">招商</a></li>
+          </ul>
+        </div>
+            </div-->
+    <div class="notice_board m h" id="noticeBoard"></div>
+    <!--
+        <%@ page contentType="text/html;charset=GBK"%>
+        -->
+    <!--div class="pp_head_sline" id="pp_head_sline"><div id="sim_head_module">
+        <div class="pp_cat_head head m" id="search_bar">
+          <div class="pp_cat_logo"><a href="http://www.paipai.com/?PTAG=20060.24.1" title="拍拍网：腾讯旗下网站 - 拍拍购物更放心" target="_top"><img src="http://static.paipaiimg.com/module/logo/pp_cat_head.png" alt="拍拍网：腾讯旗下网站 - 拍拍购物更放心" /></a></div>
+          <div class="pp_cat_search">
+            <div class="pp_cat_sformc pp_cat_sform_s">
+              <span class="pp_cat_spl"></span>
+              <form id="searchForm" class="pp_cat_sform" name="searchForm" autocomplete="off" method="get" target="_self" onsubmit="return false" action="http://search.paipai.com/cgi-bin/comm_search">
+                <span class="pp_cat_stextc"><input type="text" class="pp_cat_stext" autocomplete="off" id="KeyWord" name="KeyWord" value="" /></span>
+                <input type="hidden" id="searchType" name="searchType" value="0" />
+                <input type="hidden" id="sClassid" name="sClassid" value="0" />
+                <button type="submit" class="pp_cat_sbtn" id="headSubmitBtn" frm="searchForm">搜索</button>
+              </form>
+              <span class="pp_cat_spr"></span>
+              <div class="pp_cat_suggestions" id="pp_cat_suggestions">
+                <div class="auto-result" id="searchDrawList"></div>
+                <iframe frameBorder="0" class="mask-auto" id="maskSearchDrawList"></iframe>
+              </div>
+            </div>
+            <ul class="pp_cat_smore">
+              <li><a target="_blank" href="http://help.paipai.com/index.shtml?PTAG=20034.1.11">如何开始？</a></li>
+              <li><a target="_blank" href="http://search.paipai.com/search_goods.shtml?PTAG=20028.4.15">高级搜索</a></li>
+            </ul>
+          </div>
+        </div>
+            </div>
+            </div-->
+    <!-- e inc_first_head_sim ppms -->
+
+    <div class="wrapper_search">
+      <!-- S setp -->
+      <div class="flow_step_no1 flow_step_no0_n" >
+        <div class="flow_step">
+          <ol class="cols3">
+            <li class="step_1">1.选择商品分类</li>
+            <li class="step_2">2.填写商品详情</li>
+            <li class="step_3">3.发布成功</li>
+          </ol>
+        </div>
+      </div>
+      <!-- E setp -->
+      <!--S 提示-->
+      <div class="wp_mod_tips">
+        <div class="mod_tips">
+          <p>提醒：商品违规发布累计扣十二分将会被处以店铺商品批量下架、限制发布商品及公示警告的处罚。禁止发布侵犯他人知识产权的商品，请确认商品符合知识产权保护的规定。请您在发布前详细了解以下规则：</p>
+          <p class="tips_links"><a href="http://help.paipai.com/content/help_60102.shtml" target="_blank">拍拍商品发布规则</a><a href="http://help.paipai.com/content/help_1046.shtml" target="_blank">拍拍网监管处罚细则</a><a href="http://help.paipai.com/content/help_60101.shtml" target="_blank">禁止交易和限制交易的物品规则</a></p>
+        </div>
+      </div>
+      <!--E 提示-->
+      <!--S 搜索商品-->
+      <!--div class="wp_search_com" ><span class="icon"></span><span class="txt">类目搜索：
+          <input type="text" id="searchKey" maxlength="22" value="{$taobaoItemCat}"/>
+        </span><a class="btn_search" href="#" id="searchBtn"></a></div-->
+      <!--S 搜索结果-->
+      <div class="wp_search_result" id="searchArea" style="display:none;">
+        <div class="back_to_sort"><a href="#" target="_blank" tag="goSelect">&lt;&lt;返回商品类目选择</a></div>
+        <div class="no_result" id="searchNone" >
+          <div class="cont" ></div>
+        </div>
+        <div class="has_result" id="searchLoad" style="display:none">
+          <div class="loading" ><img src="http://static.paipaiimg.com/upload/loading.gif" /><span class="txt_searching">搜索中...</span></div>
+        </div>
+        <div class="has_result" id="searchSome" >
+          <div id="searchEnd"></div>
+          <div class="result_list" id="searchList" >
+            <ul >
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!--E 搜索结果-->
+      <!--E 搜索商品-->
+      <!--S 类目选择区域-->
+      <div class="wp_sort" id="selectArea" style="position:relative;">
+        <div class="sort_selector">
+          <div class="sort_title">
+            <div class="txt">宝贝名称：</div><!--input type="text" class="select_box" id="commSelect" value="请选择" /-->
+            <span>{$taobaoItemTitle}</span>
+          </div>
+        </div>
+        <div class="select_list" id="commListArea" style="display:none;" >
+          <ul>
+          </ul>
+        </div>
+        <div class="wp_sort_block">
+          <div class="sort_list">
+            <div id="sortShowC0" class="sort_show blank" >
+              <!--div class="wp_search_sort">
+                <input type="text" value="输入名称或拼音首字母" id="filterKey0" tag="filter" lid="0" maxlength="10" />
+                <a href="#" class="btn_sort current" tag="orderList" hidefocus="true" state="0" lid="0"></a>
+                <div style="clear:both"></div>
+              </div-->
+              <div class="wp_category_list">
+                <div class="category_list">
+                  <ul id="classList0">
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="sort_list">
+            <div id="sortShowC1" class="sort_show blank">
+              <!--div class="wp_search_sort">
+                <input type="text" value="输入名称或拼音首字母" id="filterKey1" tag="filter" lid="1" maxlength="10"/>
+                <a href="#" class="btn_sort current" tag="orderList" hidefocus="true" state="0" lid="1"></a>
+                <div style="clear:both"></div>
+              </div-->
+              <div class="wp_category_list">
+                <div class="category_list">
+                  <ul id="classList1">
+                  </ul>
+                </div>
+              </div>
+
+            </div>
+          </div>
+          <div class="sort_list">
+            <div id="sortShowC2" class="sort_show blank">
+              <!--div class="wp_search_sort">
+                <input type="text" value="输入名称或拼音首字母" id="filterKey2" tag="filter" lid="2" maxlength="10"/>
+                <a href="#" class="btn_sort current" tag="orderList" hidefocus="true" state="0" lid="2"></a>
+                <div style="clear:both"></div>
+              </div-->
+              <div class="wp_category_list">
+                <div class="category_list">
+                  <ul id="classList2">
+                  </ul>
+                </div>
+              </div>
+
+            </div>
+          </div>
+          <div class="sort_list sort_list_last">
+            <div id="sortShowC3" class="sort_show blank">
+              <!--div class="wp_search_sort">
+                <input type="text" value="输入名称或拼音首字母" id="filterKey3" tag="filter" lid="3" maxlength="10"/>
+                <a href="#" class="btn_sort current" tag="orderList" hidefocus="true" state="0" lid="3"></a>
+                <div style="clear:both"></div>
+              </div-->
+              <div class="wp_category_list">
+                <div class="category_list">
+                  <ul id="classList3">
+                  </ul>
+                </div>
+              </div>
+
+            </div>
+          </div>
+          <div class="clear_fix"></div>
+        </div>
+        <div id="dataLoading" class="wp_data_loading" style="position:absolute; left:380px;top:150px;display:none;"><div class="data_loading"><img src="http://static.paipaiimg.com/upload/icon_data_loading.gif" alt="loading..." />
+            <span class="txt">加载中...</span></div></div>
+      </div>
+      <!--E 类目选择区域-->
+      <!--S 类目提示信息-->
+      <div class="tips_choice" id="classInfoArea" style="display:none;">
+        <span class="tips_zt"></span>
+        <div class="hover_tips_cont">
+          <div class="current_sort">您当前选择的商品类目是：<strong id="classPathStr"></strong> <span id="addToComm"> <a class="add_link" href="#">[加为常用类目]</a></span> <span class="add_done" style="display:" id="isAddedToComm">已加入常用类目</span>
+            <div class="wp_tips_help">
+              <span class="msg0-icon-help" ></span>
+              <div class="tips">
+                <!--S 提示信息小箭头-->
+                <span class="sub_tips_ztb"></span>
+                <!--E 提示信息小箭头-->
+                <!--S 提示信息内容-->
+                <div class="sub_tips_cont">
+                  <strong id="hoverTips_title"></strong>
+                  <div class="cont" >新功能，可有效减少您的工作量！<a target="_blank" href="http://help.paipai.com/content/help_210111.shtml">如何使用？</a></div>
+                </div>
+                <!--E 提示信息内容-->
+              </div>
+            </div>
+          </div>
+          <p class="sort_info" id="classInfoStrArea"><span class="title">类目说明：</span><span class="info" id="classInfoStr" ></span></p>
+          <p class="clear_fix"></p>
+          <p class="wp_launch" id="checkSubVirtualArea">
+            <label ><input type="checkbox" id="pubVirtual"  value="1"  />我要发布此类商品的虚拟商品</label></p>
+          <p id="checkVirtualTypeArea">
+            <label id="JnetSpan" ><input type="radio" name="sellMode"  value="2"  />发布骏网点卡商品</label>
+            <label id="OufeiSpan"><input type="radio" name="sellMode" value="3"  />发布欧飞点卡商品</label>
+            <label id="Ka91Span"><input type="radio" name="sellMode" value="4"  />发布91点卡商品</label>
+            <label id="FlashcardSpan"><input type="radio" name="sellMode" value="5"   />发布诚保代充商品</label>
+            <label id="AutocardSpan"><input type="radio" name="sellMode" value="1"   />发布预存卡密商品</label>
+            <label id="defaultSpan"><input type="radio" name="sellMode" value="0"  />发布普通商品</label>
+            <label id="PlatformSpan" style="display:none;"><input type="radio" name="sellMode" value="6"  />发布平台代充商品</label>
+          </p>
+        </div>
+      </div>
+      <!--E 类目提示信息-->
+      <div class="wp_confirm"><a href="#" class="btn_confirm_unavailable" id="gotoNext">下一步</a></div>
+      <!--可选择状态 class="btn_confirm"-->
+    </div>
+    <form name="form1" id="form1" method="post" action="http://my.paipai.com/cgi-bin/itementry/uploadentry">
+      <input type="hidden" name="cSellType" value="0" />
+      <input type="hidden" name="sItemid" id="sItemid" value="" />
+      <input type="hidden" name="iUpdateType" value="0" />
+      <input type="hidden" name="cSellModel" id="cSellModel" value="" />
+      <input type="hidden" name="puteVirtual" id="puteVirtual" value="" />
+      <input type="hidden" name="c1" id="c1" value="" />
+      <input type="hidden" name="c2" id="c2" value="" />
+      <input type="hidden" name="c3" id="c3" value="" />
+      <input type="hidden" name="c4" id="c4" value="" />
+      <input type="hidden" name="c5" id="c5" value="" />
+    </form>
+
+    <!-- ppms:1983:5020-->
+    <!--div class="pp_seller_ads" style=" margin: 10px 0;"-->
+    <!--a href="http://fuwu.paipai.com/banjia.shtml?PTAG=20258.2.1" target="_blank" title="商家一键搬家"><img src="http://pics0.paipaiimg.com/update/20131204/pcd_918-100.jpg" alt="商家一键搬家" /></a--><!--[if !IE]>|xGv00|898dcd37cb9cbe856942a14b2b76f98b<![endif]-->
+    <!--/div-->
+
+
+    <div id="templates">
+
+      <!--常用类目功能说明
+          新功能，可有效减少您的工作量！<a href="#" target="_blank">如何使用？</a>
+          常用类目功能说明-->
+      <!--选择框中的单个元素结构
+          <li class="{#isHightLight#} {#isSelect#}" path="0,{#path#}" leaf="{#leaf#}" cid="{#classId#}" id="classItem_{#classId#}"><span class="{#isLeaf#}">{#className#}</span></li>
+          选择框中的单个元素结构-->
+      <!--demo:<li class="hight_light selected"><span class="has_leaf">男士护理</span></li>-->
+      <!--常用类目中的下拉选择框
+          <li path="0,{#classPath#}"><span class="title">{#classPathStr#}</span><a href="#" path="0,{#classPath#}" class="del_unavailable"></a></li>
+          常用类目中的下拉选择框-->
+      <!--搜索结果中的单项结构
+          <li cid="{#classid#}" pos="{#pos#}">{#path#}<div style="display:none;color:#999;">(该类目含有的类目属性：{#match#})</div></li>
+          搜索结果中的单项结构-->
+      <!--class="selected"  <span class="hight_light">运动</span>服饰/配件/包装>><span class="hight_light">运动</span>纪念品>>其它<span class="hight_light">运动</span>纪念品
+        -->
+      <!--搜索结果为空时提示信息
+          <p class="title"><strong>抱歉，没有找到和“{#key#}”相关的类目。</strong></p>
+      <p>您可以：</p>
+      <p>1.<a href="http://search1.paipai.com/cgi-bin/comm_search1?KeyWord={#key#}&sClassid=&shoptype=&sf=&searchType=0
+                    ">搜索“{#key#}”商品</a>，参考他人放置的类目。</p>
+      <p>2.<a href="#" tag="goSelect">返回商品类目选择。</a></p>
+      搜索结果为空时提示信息-->
+      <!--搜索有结果时提示信息
+          共有<span class="hight_light">{#num#}</span>个与“<span class="hight_light">{#key#}</span>”有关的条目：<span class="tips">(提示：{#helper#})</span>
+          搜索有结果时提示信息-->
+      <!--全诚保提示信息
+          <div class="cb_tips">  <p>您好！拍拍网已经实现全站诚保，您还不是诚保卖家，不能发布商品，只有加入诚信保证计划才能发布商品。</p>  </div>
+          <div class="cb_priviledge"><h3>加入“诚信保证计划”后您的权利有：</h3><ul> <li>1、您可以发布您店铺主营类目相关的商品；</li><li>2、您发布的商品将在前台打上诚保标志，支持诚保服务；</li><li>3、您的商品打上诚保标志后，可信度高，买家更容易接受；</li><li>4、您的商品将可以参加拍拍各大卖场活动，提高交易量；</li><li>5、您的店铺将获得橱窗推荐位，增加商品的曝光度；</li><li>6、可以参加拍拍网大部分的促销活动，增加交易量。</li></ul></div><p class="cb_tips_btn"><input type="button" onclick="float?float.close():'';window.open('http://my.paipai.com/cgi-bin/guaranty_show?isSellLink=30');" style="width: 120px; margin-right: 10px;" value="加入诚保"><a target="_blank" href="http://bbs1.paipai.com/g40005c0i1087s0p0.html">了解诚保&gt;&gt;</a></p>
+            全诚保提示信息-->
+
+    </div>
+    <!--div class="m">
+        <div class="footer-services">
+          <ul>
+            <li class="footer-snewbie">
+              <dl> <dt><span class="ico"></span><strong class="tit">新手上路</strong></dt> <dd><a href="http://www.paipai.com/fresher/promote/mall.shtml?ppmall=paipai_fresher_12&amp;PTAG=20084.27.1" target="_blank">新人购物指南</a></dd> <dd><a href="http://fuwu.paipai.com/?PTAG=20084.27.1" target="_blank">商户服务平台</a></dd> </dl></li>
+            <li class="footer-ssafe">
+              <dl> <dt><span class="ico"></span><strong class="tit">购物保障</strong></dt> <dd><a href="http://www.paipai.com/trust/plan/?tab=2&amp;PTAG=20084.27.2" target="_blank">先行赔付</a></dd> <dd><a href="http://www.paipai.com/trust/plan/?tab=6&amp;PTAG=20084.27.2" target="_blank">正品假一赔三</a></dd> <dd><a href="http://www.paipai.com/trust/plan/?tab=4&amp;PTAG=20084.27.2" target="_blank">7天包退</a></dd> <dd><a href="http://www.paipai.com/trust/plan/?tab=5&amp;PTAG=20084.27.2" target="_blank">诚保代充</a></dd></dl></li>
+            <li class="footer-spay">
+              <dl> <dt><span class="ico"></span><strong class="tit">支付方式</strong></dt> <dd><a href="http://help.paipai.com/pay/index.html#5-1-1-1?PTAG=20084.27.3" target="_blank">一点通支付</a></dd> <dd><a href="http://help.paipai.com/pay/index.html#4-1-1-1?PTAG=20084.27.3" target="_blank">信用卡支付</a></dd> <dd><a href="http://help.paipai.com/pay/index.html#3-1-1-1?PTAG=20084.27.3" target="_blank">借记卡支付</a></dd> <dd><a href="http://help.paipai.com/pay/index.html#8-1-1-1?PTAG=20084.27.3" target="_blank">请人代付</a></dd></dl></li>
+            <li class="footer-scare">
+              <dl class="last"> <dt><span class="ico"></span><strong class="tit">售后服务</strong></dt> <dd>业务咨询：0755-83762288</dd> <dd><a href="http://315.paipai.com/?PTAG=20084.27.4" target="_blank">消费者维权中心</a></dd></dl></li>
+          </ul>
+        </div>
+  </div>
+
+  <div id="foot" class="m">
+    <div class="foot_nav">
+      <ul class="foot_agreement">
+        <li><a href="http://help.paipai.com/introduce.shtml" target="_blank">拍拍简介</a></li>
+        <li><a target="_blank" href="http://help.paipai.com/news.shtml">拍拍动态</a></li>
+        <li><a target="_blank" href="http://help.paipai.com/commerce.shtml">商务合作</a></li>
+        <li><a target="_blank" href="http://service.qq.com/category/paipai.html">客服中心</a></li>
+        <li><a target="_blank" href="http://help.paipai.com/hr/">拍拍招聘</a></li>
+        <li><a target="_blank" href="http://www.paipai.com/sitemap.shtml">网站地图</a></li>
+        <li><a target="_blank" href="http://help.paipai.com/user_agreement.shtml">用户协议</a></li>
+        <li><a target="_blank" href="http://www.tencent.com/law/mo_law.shtml?/law/copyright.htm">版权说明</a></li>
+      </ul>
+      <div class="group_site">
+        <h4>腾讯旗下网站：</h4>
+        <ul>
+          <li><a target="_blank" href="http://www.tencent.com">腾讯官网</a></li>
+          <li><a target="_blank" href="http://www.qq.com">腾讯门户</a></li>
+          <li><a target="_blank" href="http://www.paipai.com">拍拍购物</a></li>
+          <li><a target="_blank" href="http://www.tenpay.com">财付通支付</a></li>
+          <li><a target="_blank" href="http://www.soso.com">SOSO搜索</a></li>
+          <li><a target="_blank" href="http://t.qq.com">腾讯微博</a></li>
+          <li><a target="_blank" href="http://fanli.qq.com/">QQ返利</a></li>
+          <li><a target="_blank" href="http://www.qq.com/map/">更多业务</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="copyright">
+      <div class="saftsite"> <a target="_blank" href="http://service.paipai.com/cgi-bin/go?pageId=10&domainId=1&linkId=84&url=http://www.paipai.com/include/netSupervision.html"><span class="ploice1"></span></a> <a target="_blank" href="http://service.paipai.com/cgi-bin/go?pageId=10&domainId=1&linkId=84&url=http://www.paipai.com/include/netSupervision.html"><span class="ploice2"></span></a> </div>
+      <div>
+        <p>Copyright&#169; 1998-<script type="text/javascript">(function(){document.write(new Date().getFullYear())})()</script> Tencent.All Rights Reserved 腾讯公司 版权所有 </p>
+        <p><a target="_blank" href="http://service.paipai.com/cgi-bin/go?pageId=10&domainId=1&linkId=79&url=http://www.paipai.com/include/gdca.html">广东省通管局</a> <a target="_blank" href="http://www.qq.com/icp.shtml">增值电信业务经营许可证B2-20040031 </a></p>
+      </div>
+    </div>
+            </div-->
+<script>
 $(function () {
-    $('.return-btn').on('click', function () {
-        refreshNavigations('');
+    $(document).on('click', '.category_list li', function (e) {
+        var $li = $(e.target).closest('li');
+        navigate($li.attr('cid'), parseInt($li.attr('level')) + 1);
     });
 
-    $('.next-btn').on('click', function () {
-        var $input = $('.search-list > .fd-clr input:checked'),
-            isClass = $input.attr('isClass'),
-            navigationId = $input.attr('id');
-
-        if (isClass === '1') {
-            $('.mainform > .navigationId-input').val(navigationId);
+    $('#gotoNext').on('click', function () {
+        if ($('.btn_confirm').length > 0) {
+            var $selectedLi = $('li.selected[leaf=1]');
+            $('.mainform > .navigationId-input').val($selectedLi.attr('cid'));
             $('.mainform').submit();
+        }
+    });
+
+    navigate('', 0);
+
+    function navigate(navigationId, level) {
+        var $selectedLi = $('.category_list li[cid=' + navigationId + ']');
+        $('#classList' + (level - 1) + ' li').removeClass('selected');
+        $selectedLi.addClass('selected');
+        if ($selectedLi.attr('leaf') == '1') {
+            $('#gotoNext').removeClass('btn_confirm_unavilable');
+            $('#gotoNext').addClass('btn_confirm');
+            return;
         } else {
-            alert('请选择类目再继续！');
+            $('#gotoNext').removeClass('btn_confirm');
+            $('#gotoNext').addClass('btn_confirm_unavilable');
         }
-    });
-
-    $(document).on('change', 'input[type=radio]', function (e) {
-        var $input = $(e.target),
-            isClass = $input.attr('isClass'),
-            navigationId = $input.attr('id');
-
-        if (isClass === '0') {
-            refreshNavigations(navigationId);
-        }
-    });
-
-    $('.return-btn').click();
-
-    function refreshNavigations(navigationId) {
         $.ajax({
             url: '{:U('Index/searchCategory')}',
             data: {
@@ -54,314 +416,26 @@ $(function () {
                 for (var i = 0; i < childList.length; i++) {
                     var c = childList[i];
                     if (navigationId != '' || (c.navigationId == '22001' || c.navigationId == '20501')) {
-                        itemsString += '<li>';
-                        itemsString += '<input id="' + c.navigationId + '" type="radio" name="search-radio" isClass="' + c.isClass + '" >';
+                        itemsString += '<li cid="' + c.navigationId + '" leaf="' + c.isClass + '" level="' + level + '">';
                         if (c.isClass == '1') {
-                            itemsString += '<label for="' + c.navigationId + '">' + c.navigationName + '</label>';
+                            itemsString += '<span>' + c.navigationName + '</span>';
                         } else {
-                            itemsString += '<label for="' + c.navigationId + '">' + c.navigationName + ' &gt;&gt;&gt;</label>';
+                            itemsString += '<span class="has_leaf">' + c.navigationName + '</span>';
                         }
-
-                        itemsString += '<em class="fd-hide"></em>';
                         itemsString += '</li>';
                     }
                 }
 
-                $('ul.fd-clr li').remove();
-                $('ul.fd-clr').append(itemsString);
-                $('.search-category').removeClass('fd-hide');
-                $('.tab-b.mod.mod-offer-choose-category').removeClass('fd-hide');
+                for (var i = level; i < 4; i++) {
+                    $('#classList' + i + ' li').remove();
+                    $('#sortShowC' + i).addClass('blank');
+                }
+                $('#classList' + level).append(itemsString);
+                $('#sortShowC' + level).removeClass('blank');
             }
         });
     }
 });
 </script>
-</head>
-<body>
-    <form class="mainform fd-hide" action="{:U('Index/editPage')}" method="POST">
-        <input type="hidden" class="navigationId-input" name="navigationId"/>
-        <input type="hidden" class="taobaoItemId-input" name="taobaoItemId" value="{$taobaoItemId}"/>
-    </form>
-    <div id="doc"
-        data-doc-config='{"_csrf_token":"8abe905bb324aa8417d1b90f91355541","submitUrl":"http://offer.1688.com/offer/post/fill_product_info.htm","submitData":{"_csrf_token":"8abe905bb324aa8417d1b90f91355541","site":"","tradeType":"0","operator":"new","offerDraftId":"","fromWhere":"normal","adGroupId":"","productId":"","details":"","subject":"","unit":"","price":"0.0","picUrl":"","isCategoryChanged":true,"currentPage":"chooseCategory"}}'>
-        <div id="header" class="header">
-            <!--div class="ali-logo">
-                <h1>
-                    <a href="http://exodus.1688.com/"
-                        title="全球最大的采购批发市场">阿里巴巴</a>
-                </h1>
-            </div-->
-            <div class="ali-search">
-                <span>你好，{$memberId}</span> <span class="bor">[<a
-                    class="signout" target="_self"
-                    href="{:U('Index/signOut')}"
-                    title="退出">退出</a>]
-                </span> <!--span class="bor"><a
-                    href="http://work.1688.com/" title="我的阿里">我的阿里</a></span--> <span><a
-                    href="http://114.1688.com/kf/detail/2789732.html?tracelog=kf_2012_budian_backofferfabu5"
-                    title="信息发布规则">信息发布规则</a></span>
-            </div>
-        </div>
-
-        <div id="content" class="content">
-            <div class="content-tit">
-                <div class="layout">
-                    <div class="fd-left">
-                        <h2>发布产品信息</h2>
-                    </div>
-                    <div class="fd-right guide">
-                        <span class="current">选择类目</span> <span
-                            class="arrow">&gt;</span> <span>填写产品详情</span>
-                        <span class="arrow">&gt;</span> <span>提交成功，等待审核</span>
-                    </div>
-                </div>
-            </div>
-            <div class="content-con">
-                <div class="layout">
-                    <div class="notice-box fd-clr">
-                        <span class="notice">为您的产品信息选择合适的类目</span>
-                    </div>
-                    <div class="choose-tab fd-clr">
-                        <ul>
-                            <li class="tab-t current"><a
-                                target="_self" href="#" title="查找类目">选择类目</a><span></span></li>
-                            <!--li class="tab-t"><a target="_self" href="#" title="您常使用的类目">您常使用的类目</a><span></span>
-                                                        </li-->
-                        </ul>
-                        <!--div class="tab-note">
-                            <div class="fd-left mod mod-offer-import-offer"
-                                    data-mod-config='{"tradeType":"0","offerPageListUrl":"http://offer.1688.com/offer/asyn/offer_page_list.json","offerGroupListUrl":"http://offer.1688.com/offer/asyn/group_list.json"}'>
-                                    <a href="#" class="btn-import-offer" target="_self">导入已发布的信息</a>
-                            </div>
-                            <span class="fd-right">对类目设置有建议，请<a
-                                    href="http://club.1688.com/forum/thread/add.html?forum_id=100757&subjectTitle=%CE%D2%B6%D4%C0%E0%C4%BF%C9%E8%D6%C3%B5%C4%BD%A8%D2%E9"
-                                    title="点此反馈">点此反馈</a></span>
-                        </div-->
-                    </div>
-                    <div class="tab-b mod mod-offer-choose-category"
-                        data-mod-config='{"showCateInfo":true,"tradeType":"0", "lastUsedCateUrl":"http://offer.1688.com/offer/asyn/last_used_category_info.do","childCateUrl":"http://offer.1688.com/offer/asyn/category_list.do","fullCateUrl":"http://offer.1688.com/offer/asyn/full_category_info.do","searchCateUrl":"http://offer.1688.com/offer/asyn/recommend_category_list.json","getPostCatInfoUrl":"http://spu.1688.com/spu/ajax/get_post_cat_info.htm","searchSuggestionUrl":"http://suggest.1688.com/bin/suggest","lastTradeType":"1"}'>
-                        <div class="choose-cate-form fd-clr">
-                            <span>请选择：</span>
-                            <input class="search-input" type="text"
-                                placeholder="请输入产品关键词，我们为你推荐类目"
-                                value="{$taobaoItemTitle}" /> <!--input
-                                type="button" value="返回"
-                                class="keybtn-search"-->
-                            <!--span>或</span> <a href="#" target="_self" class="choose-tab-hid" title="自选类目">自选类目</a-->
-                            <div class='search-suggestion fd-hide'>
-                                <ul>
-
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="browse-category fd-clr fd-hide">
-                            <!-- 类目筛选 unit-->
-                            <div
-                                class="category-filter unit-category-filter"
-                                data-unit-config='{"label":"类目","hasAmount":false}'>
-                                <label></label> <span
-                                    class="filter selected"><a
-                                    data-trade-type='0' href="#">所有类目<em></em></a></span>
-                                <span>|</span> <span class="filter"><a
-                                    data-trade-type='1' href="#"
-                                    title="发布服装、家居、小商品等现货批发信息">供应产品<em></em></a></span>
-                                <span class="filter"><a
-                                    data-trade-type='2' href="#"
-                                    title="依据买家需求定制、定做、订做的非现货类产品">加工定制<em></em></a></span>
-                                <span class="filter"><a
-                                    data-trade-type='3' href="#"
-                                    title="物流仓储货代、合作加盟转让、认证咨询翻译等">商务服务<em></em></a></span>
-                                <dl class="tips">
-                                    <dt class='leading'></dt>
-                                    <dd>
-                                        这里可以选择发布信息类型! <a href="#">知道了</a>
-                                    </dd>
-                                </dl>
-                                <div class="fd-clr"></div>
-                            </div>
-                            <div class="category-select-list">
-                                <ul class="category-select" level="1">
-                                </ul>
-                                <ul class="category-select" level="2">
-                                </ul>
-                                <ul class="category-select" level="3">
-                                </ul>
-                                <ul class="category-select last"
-                                    level="4">
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="search-category fd-hide">
-                            <!--div
-                                class="category-filter unit-category-filter"
-                                data-unit-config='{"label":"类目","hasAmount":true}'>
-                                <label></label> <span
-                                    class="filter selected"><a
-                                    data-trade-type='0' href="#">所有类目<em></em></a></span>
-                                <span>|</span> <span class="filter"><a
-                                    data-trade-type='1' href="#"
-                                    title="发布服装、家居、小商品等现货批发信息">供应产品<em></em></a></span>
-                                <span class="filter"><a
-                                    data-trade-type='2' href="#"
-                                    title="依据买家需求定制、定做、订做的非现货类产品">加工定制<em></em></a></span>
-                                <span class="filter"><a
-                                    data-trade-type='3' href="#"
-                                    title="物流仓储货代、合作加盟转让、认证咨询翻译等">商务服务<em></em></a></span>
-                                <dl class="tips">
-                                    <dt class='leading'></dt>
-                                    <dd>
-                                        这里可以选择发布信息类型! <a href="#">知道了</a>
-                                    </dd>
-                                </dl>
-                                <div class="fd-clr"></div>
-                            </div-->
-                            <!--查找有结果start-->
-                            <div class="search-result">
-                                <div class="search-list fd-clr">
-                                    <ul class="fd-clr"></ul>
-                                    <!--div class="search-bottom">
-                                        不是您想要的类目？<a class="to-browse"
-                                            href="#" target="_self"
-                                            title="您可以通过浏览来自选类目">您可以通过浏览来自选类目</a>
-                                    </div-->
-                                </div>
-                            </div>
-                            <!--查找有结果end-->
-                            <!--查找无结果start-->
-                            <div class="search-noresult fd-hide">
-                                <div class="tip">
-                                    <p>
-                                        抱歉，没有找到与关键字“<span
-                                            class="noresult-keywords"></span>”相关的类目。
-                                    </p>
-                                    <p>
-                                        请更换关键词<a href="#"
-                                            class="to-browse"
-                                            target="_self"
-                                            title="或通过浏览来自选类目">或通过浏览来自选类目</a>
-                                    </p>
-                                </div>
-                            </div>
-                            <!--查找无结果end-->
-                        </div>
-                    </div>
-
-                    <div
-                        class="tab-b mod mod-offer-oftenuse-category fd-hide"
-                        data-mod-config='{"tradeType":"0", "oftenuseCateUrl":"http://offer.1688.com/offer/asyn/often_use_category.json","getPostCatInfoUrl":"http://spu.1688.com/spu/ajax/get_post_cat_info.htm"}'>
-                        <!-- 类目筛选 unit-->
-                        <div
-                            class="category-filter unit-category-filter"
-                            data-unit-config='{"label":"类目","hasAmount":true}'>
-                            <label></label> <span
-                                class="filter selected"><a
-                                data-trade-type='0' href="#">所有类目<em></em></a></span>
-                            <span>|</span> <span class="filter"><a
-                                data-trade-type='1' href="#"
-                                title="发布服装、家居、小商品等现货批发信息">供应产品<em></em></a></span>
-                            <span class="filter"><a
-                                data-trade-type='2' href="#"
-                                title="依据买家需求定制、定做、订做的非现货类产品">加工定制<em></em></a></span>
-                            <span class="filter"><a
-                                data-trade-type='3' href="#"
-                                title="物流仓储货代、合作加盟转让、认证咨询翻译等">商务服务<em></em></a></span>
-                            <dl class="tips">
-                                <dt class='leading'></dt>
-                                <dd>
-                                    这里可以选择发布信息类型! <a href="#">知道了</a>
-                                </dd>
-                            </dl>
-                            <div class="fd-clr"></div>
-                        </div>
-                        <!-- 类目筛选 unit end -->
-
-                        <div class="oftenuse-result">
-                            <div class="oftenuse-list fd-clr">
-                                <ul class="fd-clr">
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="oftenuse-noresult fd-hide">
-                            <div class="tip">
-                                <p>
-                                    暂无经常使用的类目！请<a href="#"
-                                        target="_self" title="试一试查找类目"
-                                        class="to-search">试一试查找类目</a>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <!--当前选择类目start-->
-                    <!--div class="unit-choose-result">
-                        <p class="cate-result">
-                            <span>您当前选择的类目：</span> <span
-                                class="choose-result noresult">尚未选择</span>
-                        </p>
-                        <p class="cate-info fd-hide">
-                            <span>类目说明：</span> <span class="info">尚未选择</span>
-                        </p>
-                    </div-->
-                    <!--当前选择类目end-->
-                    <div class="unit-choose-offertype fd-clr fd-hide">
-                        <span class="offertype-tit">发布产品类型：</span>
-                        <ul class="offertype-con">
-                            <li><input type="radio"
-                                name="offertype" id="type-custom"
-                                value="" /><label for="type-custom">发布加工定制产品</label></li>
-                            <li><input type="radio"
-                                name="offertype" id="type-common"
-                                value="" /><label for="type-common">发布普通现货产品</label></li>
-                        </ul>
-                    </div>
-                    <div class="submit-box fd-clr">
-                        <a class="return-btn dpl-btn-important dpl-btn-l"
-                            next="0" href="javascript:;"
-                            title="返回最初类目列表">返回最初类目列表</a>
-                        <a class="next-btn dpl-btn-important dpl-btn-l"
-                            next="0" href="javascript:;"
-                            title="下一步，填写信息详情">下一步，填写信息详情</a>
-                    </div>
-                </div>
-            </div>
-            <!--div class="footer">
-                <ul>
-                    <li>阿里巴巴版权所有 1999-2012 <a
-                            href="http://info.1688.com/biznews/pages/alihome/js_zzq.html">著作权与商标声明</a></li>
-                    <li><a
-                            href="http://info.1688.com/biznews/pages/alihome/js_fl.html">法律声明</a></li>
-                    <li><a
-                            href="http://info.1688.com/biznews/pages/alihome/js_fw.html">服务条款</a></li>
-                    <li><a
-                            href="http://info.1688.com/biznews/pages/alihome/js_ys.html">隐私声明</a></li>
-                    <li><a target="_blank"
-                            href="http://page.1688.com/shtml/about/ali_china8.shtml">联系我们</a></li>
-                    <li><a href="http://page.1688.com/sitemap/sitemap.html">网站地图</a></li>
-                    <li class="no_border"><a href="http://tiyan.1688.com/">产品体验中心</a></li>
-                </ul>
-                <ul>
-                    <li class="no_border sli"><a
-                            href="http://page.1688.com/shtml/about/ali_group1.shtml"
-                            target="_blank">阿里巴巴集团</a>：阿里巴巴网络&nbsp;-&nbsp;</li>
-                    <a href="http://exodus.1688.com" target="_blank">中国站</a>&nbsp;
-                    <a href="http://www.alibaba.com/" target="_blank">国际站</a>&nbsp;
-                    <a href=" http://seller.aliexpress.com/" target="_blank">全球速卖通</a>&nbsp;
-                    <a href="http://www.alibaba.co.jp" target="_blank">日文站</a>
-                    <li><a href="http://www.net.cn/">中国万网</a></li>
-                    <li><a href="http://www.taobao.com" target="_blank">淘宝网</a></li>
-                    <li><a href="http://www.alipay.com" target="_blank">支付宝</a></li>
-                    <li><a href="http://www.yahoo.com.cn/" target="_blank">中国雅虎</a></li>
-                    <li><a href="http://www.koubei.com/" target="_blank">雅虎口碑网</a></li>
-                    <li><a href="http://www.alisoft.com" target="_blank">阿里软件</a></li>
-                    <li><a href="http://www.alimama.com/" target="_blank">阿里妈妈</a></li>
-                    <li class="no_border"><a
-                            href="http://view.1688.com/cms/zj/index.html">集团研究中心</a></li>
-                </ul>
-            </div-->
-        </div>
-    </div>
-    <div style="color: #fff; text-align: center;">
-        offer-web6.xyi<br />Server is OK
-    </div>
-    </div>
-</body>
-</html>
+  </body>
+</html><!--[if !IE]>|xGv00|47d7dcdf5e0565130eeb9cb8e754b90c<![endif]-->

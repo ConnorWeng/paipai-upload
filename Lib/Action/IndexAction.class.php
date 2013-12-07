@@ -27,12 +27,14 @@ class IndexAction extends Action {
 
         $taobaoItemId = session('paipai_current_taobao_id');
         $taobaoItem = OpenAPI::getTaobaoItem($taobaoItemId);
+        $taobaoItemCat = OpenAPI::getTaobaoItemCat($taobaoItem->cid);
 
         $this->assign(array(
             'basepath' => str_replace('index.php', 'Public', __APP__),
             'memberId' => session('uin'),
             'taobaoItemId' => $taobaoItemId,
-            'taobaoItemTitle' => $taobaoItem->title
+            'taobaoItemTitle' => $taobaoItem->title,
+            'taobaoItemCat' => $taobaoItemCat
         ));
 
         $this->display();

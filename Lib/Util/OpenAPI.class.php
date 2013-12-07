@@ -114,11 +114,31 @@ class OpenAPI {
         $c->appkey = C('taobao_app_key');
         $c->secretKey = C('taobao_secret_key');
         $req = new ItemGetRequest;
-        $req->setFields("title,desc,pic_url,sku,item_weight,property_alias,price,item_img.url");
+        $req->setFields("title,desc,pic_url,sku,item_weight,property_alias,price,item_img.url,cid,nick");
         $req->setNumIid($numIid);
         $resp = $c->execute($req, null);
 
-        return $resp->item;
+        if (isset($resp->item)) {
+            return $resp->item;
+        } else {
+            echo('<h6 style="color:red;">错误:'.$resp->msg.'</h6>');
+        }
+    }
+
+    public static function getTaobaoItemCat($cid) {
+        $c = new TopClient;
+        $c->appkey = session('taobao_app_key');
+        $c->secretKey = session('taobao_secret_key');
+        $req = new ItemcatsGetRequest;
+        $req->setFields("name");
+        $req->setCids($cid);
+        $resp = $c->execute($req, null);
+
+        if (isset($resp->item_cats->item_cat)) {
+            return Util::extractValue($resp->item_cats->item_cat->name->asXML());
+        } else {
+            echo('<h6 style="color:red;">错误:'.$resp->msg.'</h6>');
+        }
     }
 
 }
