@@ -56,6 +56,7 @@ class IndexAction extends Action {
         $title = str_replace('#', '', $title);
         $title = str_replace('*', '', $title);
 
+        // TODO: 设置类目名称以及添加返回选择类目页面的按钮
         $this->assign(array(
             'memberId' => session('uin'),
             'basepath' => str_replace('index.php', 'Public', __APP__),
@@ -102,15 +103,15 @@ class IndexAction extends Action {
         $itemAttrs = array();
 
         $itemAttrs['sellerUin'] = session('uin');
-        $itemAttrs['itemName'] = I('subject');
+        $itemAttrs['itemName'] = I('sTitle');
         $itemAttrs['attr'] = I('attr'); // '31:80020504|30:800|2ef4:3|2ef9:2|516:2|7a4:2|2ee2:3|7a0:2|2b0:2|93b5:3|2ed6:2|93bf:3|79d:2|37:20b|38:f';
         $itemAttrs['classId'] = I('navigationId');
         $itemAttrs['validDuration'] = 1209600;
         $itemAttrs['itemState'] = 'IS_FOR_SALE';
-        $itemAttrs['detailInfo'] = $_REQUEST['details'];
+        $itemAttrs['detailInfo'] = $_REQUEST['sDesc'];
         $itemAttrs['sellerPayFreight'] = 1;
         $itemAttrs['freightId'] = 0;
-        $itemAttrs['stockPrice'] = I('stockPrice') * 100;
+        $itemAttrs['stockPrice'] = floatval(I('dwPrice_bin')) * 100;
         $itemAttrs['stockCount'] = 100;
 
         /* auto off */
@@ -128,8 +129,8 @@ class IndexAction extends Action {
             /* upload image */
             $uploadImgErrorCode = 0;
             $uploadImgErrorMsg = '';
-            for ($i = 1; $i <= 3; $i += 1) { // 因为一共三个input: pictureUrl1,pictureUrl2,pictureUrl3
-                $picUrl = $_REQUEST['pictureUrl'.$i];
+            for ($i = 1; $i <= 5; $i += 1) {
+                $picUrl = $_REQUEST['uploadPicInfo'.$i];
                 if ($picUrl != '') {
                     $localImageFile = '@'.OpenAPI::downloadImage($picUrl);
                     $uploadResult = OpenAPI::modifyItemPic(session('uin'), $response->itemCode, $i - 1, $localImageFile);
