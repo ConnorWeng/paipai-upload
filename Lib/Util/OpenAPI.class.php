@@ -127,8 +127,8 @@ class OpenAPI {
 
     public static function getTaobaoItemCat($cid) {
         $c = new TopClient;
-        $c->appkey = session('taobao_app_key');
-        $c->secretKey = session('taobao_secret_key');
+        $c->appkey = C('taobao_app_key');
+        $c->secretKey = C('taobao_secret_key');
         $req = new ItemcatsGetRequest;
         $req->setFields("name");
         $req->setCids($cid);
