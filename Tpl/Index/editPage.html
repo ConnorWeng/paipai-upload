@@ -32,11 +32,51 @@
     <script type="text/javascript"
             src="http://lib.sinaapp.com/js/jquery/1.7.2/jquery.min.js"></script>
     <import type="js" file="Js.ckeditor.ckeditor" basepath="{$basepath}"/>
+<style>
+.settings-container {
+  width: 100%;
+  height: 25px;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+.settings {
+  width: 948px;
+  height: 25px;
+  padding: 0 21px 0 21px;
+  background: white;
+  margin: 0 auto;
+  line-height: 25px;
+  border: 1px solid rgb(215,215,215);
+}
+.settings span {
+  font-weight: bolder;
+}
+.settings a {
+  text-decoration: underline;
+}
+.settings input {
+  text-align: right;
+  width: 60px;
+}
+body {
+  margin-top: 30px;
+}
+</style>
   </head>
   <body>
     <form name="mainform" class="mainform" action="{:U('Index/addItem')}" method="POST">
       <input type="hidden" name="navigationId" value="{$navigationId}"/>
       <input type="hidden" name="attr" id="attr" value=""/>
+<div class="settings-container">
+  <div class="settings">
+    <span>设置:</span>
+    <label>拿货价{$rawPrice}元,</label>
+    <label>自动加价</label>
+    <input id="profit-input" type="text" value="{$profit}"/>元
+    <a id="updateProfitLink" href="#">保存</a>
+  </div>
+</div>
     <!-- s inc_first_head_sim -->
     <!--div class="pp_toolbar" id="pp_toolbar">
       <div class="m">
@@ -945,6 +985,22 @@ $(function () {
         }
 
         $('#attr').val(attrString);
+    });
+
+    $('#updateProfitLink').click(function () {
+        $.ajax({
+            url: '{:U('Index/updateProfit')}',
+            data: {
+                'profit': $('#profit-input').val()
+            },
+            success: function (data) {
+                if (data != 'false') {
+                    alert('设置成功');
+                } else {
+                    alert(data);
+                }
+            }
+        });
     });
 });
 </script>

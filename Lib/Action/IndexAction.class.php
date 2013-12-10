@@ -50,6 +50,27 @@ class IndexAction extends Action {
         $navigationId = I('navigationId');
         $taobaoItem = OpenAPI::getTaobaoItem(I('taobaoItemId'));
 
+        $price = floatval($taobaoItem->price);
+        $seePrice = '';
+        $store = M('store');
+        $storeInfo = $store->where('im_ww="'.$taobaoItem->nick.'"')->find();
+        if ($storeInfo && $store != null) {
+            $seePrice = $storeInfo['see_price'];
+        }
+        if ($seePrice == '减半') {
+            $price = $price / 2.0;
+        } else {
+            $delta = substr($seePrice, 3);
+            $price = $price - floatval($delta);
+        }
+
+        $profit = '0.00';
+        $userdataPp = D('UserdataPp');
+        $userdata = $userdataPp->where('nick="'.session('uin').'"')->find();
+        if ($userdata && $userdata != null) {
+            $profit = $userdata['profit'];
+        }
+
         $title = $taobaoItem->title;
         $khn = $this->getKHN($title);
         $title = str_replace($khn, '', $title);
@@ -66,7 +87,10 @@ class IndexAction extends Action {
             'picUrl' => $taobaoItem->pic_url,
             'itemImgs' => json_encode(Util::parseItemImgs($taobaoItem->item_imgs->item_img)),
             'offerDetail' => $taobaoItem->desc,
-            'stockPrice' => $taobaoItem->price,
+            'profit' => $profit,
+            'stockPrice' => $price + floatval($profit),
+            'seePrice' => $seePrice,
+            'rawPrice' => $price,
             'khn' => $khn
         ));
 
@@ -166,6 +190,13 @@ class IndexAction extends Action {
         }
 
         $this->display();
+    }
+
+    public function updateProfit() {
+        $memberId = session('uin');
+        $profit = I('profit');
+        $userdataPp = D('UserdataPp');
+        $this->ajaxReturn($userdataPp->updateProfit($memberId, $profit), 'JSON');
     }
 
     // 登出
