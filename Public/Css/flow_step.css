@@ -1,0 +1,19 @@
+/*
+Copyright (c) 2009,paipai Inc. All rights reserved.
+version:1.0 用于公共组件（页面流程图） 2009.05.05 create
+*/
+
+/* 组件页面流程图 */
+.flow_step{width:950px;height:25px;margin:20px auto 10px;padding:0;}
+.flow_step ol{margin:0;padding:0;}
+.flow_step li{float:left;padding:0px 15px 0px 0px;background:url(http://static.paipaiimg.com/assets/common/step.png) #e6e6e6 no-repeat 100% -50px;color:#333333;font:700 14px/25px 宋体;text-align:center;}
+.flow_step li.current{background-color:#ff5500;color:#ffffff;}
+.flow_step li.done{background-position:100% 0px;background-color:#ffd98d;color:#ff6600;}
+.flow_step li.done_none{background-position:100% -50px;background-color:#ffd98d;}
+.flow_step li.current_prev{background-position:100% -25px;background-color:#ffd98d;}
+.flow_step li.last{background:none;background-color:#e6e6e6;}
+.flow_step li.last_current{background:none;background-color:#ff5500;color:#ffffff;}
+
+.flow_step .cols3 li{width:301px;}
+.flow_step .cols4 li{width:222px;}
+.flow_step .cols5 li{width:175px;}/*  |xGv00|1283b823991a4ca96fb6aac9c136afeb */

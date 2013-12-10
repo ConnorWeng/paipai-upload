@@ -1,0 +1,167 @@
+/*选择商品分类新版的样式*/
+
+
+.select_list ul li .del,
+.select_list ul li .del_unavailable,
+.wp_search_com .icon,
+.wp_search_com .txt input,
+.wp_search_sort input,
+.wp_search_com .btn_search,
+.wp_confirm .btn_confirm_unavailable,
+.wp_confirm .btn_confirm,
+.cb_tips,
+.data_loading{background:url(http://static.paipaiimg.com/upload/bg_upload_choose_sort_new.png); background-repeat:no-repeat;}
+
+
+.wrapper_search .flow_step_no1{ margin-top:0;}
+.wrapper_search .flow_step{ margin:0;}
+
+/* s 提示的样式*/
+.wp_mod_tips{ width:948px; height:auto; margin-top:10px; border:1px solid #f1e38b; background:#fffae2; }
+.mod_tips{color:#605b47; padding:5px 20px 5px 27px; line-height:21px; background:url(http://static.paipaiimg.com/module/icon_msg_warn_weak.png) 5px 8px no-repeat}
+.mod_tips .tips_links a{ margin-right:20px;}
+.mod_tips .tips_links a:link,
+.mod_tips .tips_links a:visited{color:#0F5FBB; text-decoration:none;}
+.mod_tips .tips_links a:hover,
+.mod_tips .tips_links a:active{color:#FF4E00; text-decoration:underline;}
+/* E 提示的样式*/
+
+.wrapper_search{ width:950px; margin:0 auto; text-align:left;}
+.wp_search_com{ width:948px; height:72px; margin:auto; margin-top:10px; font-size:14px; font-weight:bold;border:1px solid #d3e5f3; background:#f4fafe;}
+.wp_search_com .icon{ display:inline-block; width:37px; height:33px; float:left; margin:17px 0 18px 213px; background-position:-140px -80px;}
+.wp_search_com .txt{ display:inline-block; width:425px; height:26px;  margin:23px 0; float:left; vertical-align:middle;}
+.wp_search_com .txt input{ height:16px; width:327px;background-position:0px -120px; border:none; line-height:16px; font-size:14px; padding:6px 5px 5px; vertical-align:middle;}
+.wp_search_com .btn_search{ display:inline-block; height:26px;width:60px; float:left; margin-top:23px; *margin-top:25px; _margin-top:24px; background-position:-60px -80px;}
+
+
+.wp_sort_block{ position:absolute;z-index:10; margin-top:20px;}
+.sort_list { float:left; width:222px; margin-right:10px;z-index:10; _ margin-right:8px;}
+.sort_list_last { margin-right:0px;}
+.sort_show { width:221px; height:280px; overflow:hidden; border:1px solid #d9e9f7; background:#fff; position:relative;}/*background:#eff7fe;*/
+.sort_list .blank{ background:#eff7fe;}
+.sort_list .blank .wp_search_sort{ display:none;}
+.sort_list .blank .category_list{ display:none;}
+.sort_show div { padding-left:0px;cursor:pointer;}/* margin-left:5px; padding-top:2px;margin-top:3px;*/
+
+.wp_category_list{width:219px; height:255px; overflow:auto; padding:28px 0 0; margin:0;}
+
+.category_list{ margin:0; padding:0; font-family:simsun;}
+.category_list ul{ margin:0 0 0 5px; padding:0;}
+.category_list ul li{ width:190px; height:21px; line-height:21px; margin:2px 0; text-indent:5px; cursor:pointer; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+.category_list ul .selected{display:block; height:21px; width:190px; border:1px solid #ffe696; background-color:#fffaea; margin-right:5px; color:#754c24}
+.category_list ul .selected .has_leaf{display:block; height:21px; width:188px;background:url(http://pics.paipai.com/upload/sortArrow.gif) 180px 8px no-repeat;}
+.category_list ul li .has_leaf{display:block; height:21px; width:188px;background:url(http://pics.paipai.com/upload/sortArrow.gif) 181px 8px no-repeat;}
+.category_list ul .hight_light{ color:#f50;}
+
+.wp_data_loading{ width:178px; height:58px; border:1px solid #92aed1; z-index:30; font-size:12px;}
+.data_loading { width:122px; height:32px; padding:11px 11px 11px 41px; border:2px solid #fff; background:#f2f8ff;}
+.data_loading img{width:32px; height:32px; float:left; margin-right:10px;}
+.data_loading .txt{display:block; width:75px; height:14px; float:left; line-height:14px; margin-top:9px; color:#000}
+
+.wp_sort{ width:918px; height:318px; margin:auto; margin-top:10px;border:1px solid #d3e5f3; background:#f4fafe; padding:15px; position:relative;}
+.wp_sort input{font:12px/1.5 Tahoma, Verdana, Simsun, Microsoft YaHei, Arial Unicode MS, Mingliu, Arial, Helvetica;}
+.sort_selector{ text-align:left;}
+.sort_selector select{ width:710px;}
+.btn_sort{ width:48px; height:19px; display:block; float:left; background:url(http://static.paipaiimg.com/upload/bg_upload_choose_sort_new.png) no-repeat; margin-top:1px; margin-left:2px;outline:none;}
+.wp_search_sort{ padding:5px 0 0 5px; height:21px; position:absolute; left:2px; top:0; background:#fff; vertical-align:middle;font-size:12px; overflow:hidden;}
+.wp_search_sort .current{ background-position:0 -20px;}
+.wp_search_sort .up{ background-position:-60px -20px;}
+.wp_search_sort .down{ background-position:-120px -20px;}
+.wp_search_sort input{ width:123px; float:left; background-position:0 -50px; color:#999;  vertical-align:middle; border:none; font-size:12px; font-family:"宋体", Tahoma, Verdana, Simsun, Microsoft YaHei, Arial Unicode MS, Mingliu, Arial, Helvetica; padding:5px 0 5px 22px; line-height:normal;}
+
+.clear_fix{ clear:both;}
+
+.sort_selector{ margin-bottom:0px; position:relative;}
+.sort_title{ margin:0;font-weight:bold; height:18px; line-height:18px; vertical-align:middle;}
+.sort_title .txt{ width:120px; float:left;}
+.sort_title .select_box{background:url(http://static.paipaiimg.com/upload/bg_select_box.png) right top no-repeat #fff; width:710px; float:left;color:#333; font-weight:normal;  border:1px solid #e2e3ea; border-top:1px solid #abadb3; cursor:pointer; font:12px/1.5 Tahoma, Verdana, Simsun, Microsoft YaHei, Arial Unicode MS, Mingliu, Arial, Helvetica; height:18px; line-height:18px; vertical-align:middle;}
+.select_list{ position:absolute; top:37px; left:135px; width:710px; width:712px\9; height:200px; overflow-y:scroll; overflow-x:hidden; background:#fff; border:1px solid #828790; z-index:300;}
+.select_list ul{ margin:0; padding:0;}
+.select_list ul li{ list-style:none; height:21px; float:none; margin:0;}
+.select_list ul li:hover{background:#3399ff; color:#fff;}
+.select_list ul li .title{ display:block; width:670px; float:left; height:21px; line-height:21px; text-indent:5px;}
+.select_list ul li .del{ display:block; width:15px; height:21px; float:left; margin-left:3px; background-position:-20px -74px; outline:none; }
+.select_list ul li .del_unavailable{display:block; width:15px; height:21px; float:left; margin-left:3px; background-position:0 -74px; outline:none;}
+.select_list ul .name_hover{ background:#3399ff; color:#fff;}
+
+
+.tips_choice a:link,
+.tips_choice a:visited{color:#0F5FBB; text-decoration:none;}
+.tips_choice a:hover,
+.tips_choice a:active{color:#FF4E00; text-decoration:underline;}
+.tips_choice{ position:relative;margin-top:12px; width:950px; color:#404040;}
+.tips_choice p{ margin:3px 0;}
+.tips_choice .tips_zt{background:url("http://static.paipaiimg.com/module/tips_icon.png") no-repeat 0 0 transparent;height:7px;position:absolute;width:11px;top:-6px; left:25px;}
+.tips_choice .hover_tips_cont{background-color:#fffaea;border:1px solid #F4CB48;padding:5px 10px 2px 10px;text-align:left; _padding-top:5px;}
+/* S 移动的帮助提示*/
+.wp_tips_help{position:relative;display:inline-block;#display:inline;}
+.wp_tips_help .tips{position: absolute; z-index:20;left:-205px; top:-33px;}
+.wp_tips_help .tips .sub_tips_ztb{ width:11px; height:7px; background:url("http://static.paipaiimg.com/module/tips_icon.png") no-repeat scroll -21px 0 transparent; left:205px; top:24px; top:27px\9; position:absolute;}
+.wp_tips_help .tips .sub_tips_cont{background-color:#FFF9CC;border:1px solid #F4CB48;padding:2px 5px;text-align:left; padding-top:5px\9;}
+.wp_tips_help .tips .sub_tips_cont .cont{display: block; overflow: hidden; height: 20px; width: 250px;}
+/* E 移动的帮助提示*/
+
+.current_sort{ margin-top:0px;}
+.sort_info{ color:#f50; position:relative; font-size:12px; font-family:"宋体"}
+.sort_info .title{ color:#404040; float:left; width:60px; line-height:18px; display:block;}
+.sort_info .info{ float:left; width:860px; line-height:18px; display:block;}
+.add_link{ margin:0 3px 0 10px;}
+.add_done{ color:#093}
+
+.wp_launch{ height:21px;line-height:21px; vertical-align:middle;}
+.wp_launch input{ width:21px; height:21px; vertical-align:middle;  padding:0; outline:none;}<!--margin:-2px 0; margin:-4px 0\9;-->
+
+.current_sort .msg0-icon-help{ }/*margin-top:-2px\9;*/
+.current_sort .help_tips{position:absolute;background-color:#FFF9CC;border:1px solid #F4CB48; z-index:20; display:block; width:263px; color:#404040; padding:2px 5px;text-align:left; left:188px; top:25px;}
+.current_sort .help_tips .hover_tips_zt{background:url("http://static.paipaiimg.com/module/tips_icon.png") no-repeat -21px 0 transparent;height:7px;position:absolute;width:11px;top:21px; left:187px;}
+
+/*搜索结果*/
+.wp_search_result{ width:928px; padding:10px; height:280px; border:1px solid #d3e5f3; background:#f4fafe; margin-top:10px;}
+.wp_search_result .loading { width:100px; height:20px; margin:117px 0 0 414px; line-height:20px;}
+.wp_search_result .loading img{ width:16px; height:20px; float:left; margin-right:5px;}
+.wp_search_result .loading .txt_searching{ display:block; width:75px; height:20px; float:left; line-height:20px;}
+.no_result .cont{ max-width:555px; margin:70px auto 0 auto;}
+.no_result .cont  p{ height:21px; line-height:21px;}
+.no_result .cont .title{ margin-bottom:15px; font-size:14px; display:block;}
+.no_result .cont span{ color:#014ccc;}
+.wp_confirm .btn_confirm_unavailable{ display:block; width:220px; height:37px; font-size:14px; color:#9d9da1; line-height:36px; text-align:center; margin:10px auto; text-decoration:none; font-weight:bold; background-position:0 -160px; cursor:default; outline:none;}
+.wp_confirm .btn_confirm{ display:block; width:220px; height:37px;  font-size:14px; color:#404040; line-height:36px; text-align:center; margin:10px auto; text-decoration:none; font-weight:bold;background-position:0 -220px; outline:none;}
+.wp_confirm .btn_confirm_unavailable:link,
+.wp_confirm .btn_confirm_unavailable:visited,
+.wp_confirm .btn_confirm_unavailable:hover,
+.wp_confirm .btn_confirm_unavailable:active{color:#9d9da1;text-decoration:none;}
+
+.back_to_sort{ margin-bottom:10px;}
+
+.wp_confirm btn_confirm:link,
+.wp_confirm btn_confirm:visited,
+.wp_confirm btn_confirm:hover,
+.wp_confirm btn_confirm:active{color:#404040; text-decoration:none;}
+
+.has_result{ width:916px; padding:5px; overflow:auto; height:235px; background:#fff;border:1px solid #D3E5F3;}
+.has_result .hight_light{ color:#f50; line-height:21px;}
+.has_result .tips{ color:#808080; line-height:21px;}
+.result_list{ margin-top:10px;}
+.result_list ul{ margin:0; padding:;}
+.result_list ul li{ list-style:none; text-indent:5px; cursor:pointer; height:auto; line-height:21px;}
+.result_list ul .selected{  border:1px solid #ffe696; background-color:#fffaea;}
+
+/*诚保提示*/
+.cb_tips{ width:426px; height:35px; background-position:0 -280px; padding:15px 23px; margin-left:-7px; overflow:hidden;}
+.cb_tips p{ margin-bottom:10px;}
+.cb_tips a{margin-right:60px;}
+.cb_priviledge{text-align: left; margin: 10px -2px; line-height: 21px; color:#333;}
+.cb_priviledge h3{ height:25px; line-height:25px; font-weight:bold; margin:3px 0;}
+.box_content p.cb_tips_btn{ margin:15px 0; text-align:center; height:22px; line-height:22px;}
+.box_content p.cb_tips_btn input{ padding-top:2px; vertical-align:middle;}
+
+
+
+
+
+
+
+
+
+
+/*  |xGv00|64f08130190d216953ba10a2e02a933e */

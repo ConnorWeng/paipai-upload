@@ -1,0 +1,66 @@
+/*
+Copyright (c) 2009,paipai Inc. All rights reserved.
+*/
+
+.flow_step{width:950px;height:25px;overflow:hidden;margin:20px auto 10px;padding:0;}
+.flow_step ol{width:110%;margin:0;padding:0;}
+.flow_step li{float:left;padding:0px 15px 0px 0px;background:url(http://static.paipaiimg.com/module/flow_step_bg.png) #e6e6e6 no-repeat 100% -50px;color:#333333;font:700 14px/25px "宋体";text-align:center;}
+
+.flow_step .cols3 li{width:301px;}
+.flow_step .cols4 li{width:222px;}
+.flow_step .cols5 li{width:175px;}
+.flow_step .cols6 li{width:143px;}
+
+.flow_step_no1 .step_1,
+.flow_step_no2 .step_2,
+.flow_step_no3 .step_3,
+.flow_step_no4 .step_4,
+.flow_step_no5 .step_5,
+.flow_step_no6 .step_6
+{background-position:100% -50px;background-color:#FF5500;color:#FFFFFF;}
+
+.cols3 .step_3,
+.cols4 .step_4,
+.cols5 .step_5,
+.cols6 .step_6
+{background-image:none;}
+
+.flow_step_no2 .step_1,
+.flow_step_no3 .step_2,
+.flow_step_no4 .step_3,
+.flow_step_no5 .step_4,
+.flow_step_no6 .step_5
+{background-position:100% -25px;background-color:#FFD98D;color:#FF6600;}
+
+.flow_step_no3 .step_1,
+.flow_step_no4 .step_1,.flow_step_no4 .step_2,
+.flow_step_no5 .step_1,.flow_step_no5 .step_2,.flow_step_no5 .step_3,
+.flow_step_no6 .step_1,.flow_step_no6 .step_2,.flow_step_no6 .step_3,.flow_step_no6 .step_4
+{background-position:100% 0;background-color:#FFD98D;color:#FF6600;}
+
+.flow_step_no3 .cols3 .step_3,
+.flow_step_no4 .cols4 .step_4,
+.flow_step_no5 .cols5 .step_5,
+.flow_step_no6 .cols6 .step_6
+{background-color:#ff5500;color:#ffffff;}
+
+.flow_step_no1_n .step_1,
+.flow_step_no2_n .step_2,
+.flow_step_no3_n .step_3,
+.flow_step_no4_n .step_4,
+.flow_step_no5_n .step_5,
+.flow_step_no6_n .step_6
+{background-position:100% -50px;background-color:#FFD98D;color:#FF6600;}
+
+.flow_step_no2_n .step_1,
+.flow_step_no3_n .step_2,
+.flow_step_no4_n .step_3,
+.flow_step_no5_n .step_4,
+.flow_step_no6_n .step_5
+{background-position:100% 0;}
+
+.flow_step_no3_n .cols3 .step_3,
+.flow_step_no4_n .cols4 .step_4,
+.flow_step_no5_n .cols5 .step_5,
+.flow_step_no6_n .cols6 .step_6
+{background-color:#FFD98D;color:#FF6600;}/*  |xGv00|cf129c02a9c0198419632aad63df3d82 */

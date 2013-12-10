@@ -1,0 +1,2012 @@
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote,
+pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd,
+q, s, samp, small, strike, strong, sub, sup, tt, var, dd, dl, dt, li, ol, ul,
+fieldset, label, legend, table, caption, tbody, tfoot, thead, tr, th, td,
+form, map {
+    margin: 0;
+    padding: 0
+}
+
+body {
+    font: 12px/1.5 Tahoma, Verdana, Simsun, Microsoft YaHei, Arial Unicode MS, Mingliu, Arial, Helvetica;
+    text-align: center;
+    background-color: #fff
+}
+
+h1, h2, h3, h4, h5 {
+    font-size: 1em
+}
+
+ul, ol {
+    list-style-type: none
+}
+
+input, select {
+    font-size: 12px
+}
+
+em, cite {
+    font-style: normal
+}
+
+table {
+    border-collapse: collapse
+}
+
+button {
+    cursor: pointer;
+    font-size: 12px;
+    margin: 0;
+    padding: 0
+}
+
+del {
+    font-family: Simsun
+}
+
+.clearfix {
+    font: 0/0 sans-serif;
+    height: 0;
+    overflow: hidden;
+    clear: both;
+    display: block
+}
+
+.clear:after {
+    content: '\20';
+    display: block;
+    height: 0;
+    clear: both
+}
+
+.clear {
+    *zoom: 1
+}
+
+fieldset, img {
+    border: 0
+}
+
+address, caption, th, em {
+    font-weight: 400
+}
+
+a {
+    color: #333;
+    text-decoration: none
+}
+
+a.blue {
+    color: #014cc9
+}
+
+a.blue:hover {
+    color: #014cc9;
+    text-decoration: underline
+}
+
+a.org {
+    color: #ff4e00
+}
+
+a:hover, a.org:hover {
+    color: #ff4e00;
+    text-decoration: underline
+}
+
+.m {
+    width: 950px;
+    text-align: left;
+    margin: auto
+}
+
+.h {
+    display: none
+}
+
+.center {
+    text-align: center
+}
+
+.pp_price {
+    font-family: Arial
+}
+
+.head {
+    text-align: left;
+    color: #666666
+}
+
+.head a:link, .head a:visited, #foot a:link, #foot a:visited {
+    color: #666666;
+    text-decoration: none
+}
+
+.head a:hover, .head a:active, #foot a:hover, #foot a:active {
+    color: #ff4e00;
+    text-decoration: underline
+}
+
+.head .buy-sell a {
+    float: left;
+    padding: 3px 9px 1px;
+    _padding-top: 4px;
+    background: url(http://static.paipaiimg.com/module/logo/pp_heads_skin_20101015.png?t=20110413) 0 -800px no-repeat
+}
+
+*+html .head .buy-sell a {
+    padding-top: 4px
+}
+
+.site-bar .site-link li {
+    float: left;
+    padding: 8px 9px 1px;
+    background: url(http://static.paipaiimg.com/module/logo/pp_heads_skin_20101015.png?t=20110413) 0 -796px no-repeat
+}
+
+.head a.buy, .head li.login {
+    background-image: none
+}
+
+.head a:link, .head a:visited {
+    color: #666666;
+    text-decoration: none
+}
+
+.head a:hover, .head a:active {
+    color: #ff4e00;
+    text-decoration: underline
+}
+
+.head .site-bar {
+    background: url(http://static.paipaiimg.com/module/logo/pp_heads_skin_20101015.png?t=20110413) 0 -768px repeat-x;
+    height: 28px;
+    line-height: normal;
+    position: relative;
+    z-index: 32;
+    font-family: Simsun
+}
+
+.head .buy-sell {
+    float: left;
+    padding-top: 4px
+}
+
+.head .site-link {
+    float: right
+}
+
+.site-link span {
+    display: inline-block;
+    -moz-box-align: center;
+    -moz-box-pack: center;
+    vertical-align: top;
+    margin-top: 4px;
+    cursor: pointer;
+    width: 7px;
+    height: 4px;
+    padding-left: 4px;
+    overflow: hidden;
+    background: url(http://static.paipaiimg.com/module/logo/pp_heads_skin_20101015.png?t=20110413) -89px -902px no-repeat
+}
+
+.head li.my-admin, .head li.help {
+    padding-top: 2px;
+    position: relative
+}
+
+.site-link li p {
+    position: relative;
+    padding-top: 5px;
+    z-index: 32
+}
+
+*+html .site-link li p {
+    padding-top: 6px
+}
+
+.site-link ul li a {
+    display: block;
+    padding: 4px 9px 2px
+}
+
+.site-link ul li a:hover, .site-link ul li a:active {
+    background-color: #f2f2f2;
+    text-decoration: underline
+}
+
+.site-link ul {
+    display: none;
+    padding-top: 22px
+}
+
+.site-link div.now {
+    z-index: 31;
+    border: 1px solid #cccccc;
+    background-color: #ffffff;
+    padding-bottom: 5px;
+    left: 0;
+    top: 0
+}
+
+.site-link div.now ul {
+    display: block
+}
+
+.head .site-link div {
+    position: absolute;
+    width: 78px
+}
+
+.head .site-link div li {
+    float: none;
+    background: none;
+    padding: 0 0 1px
+}
+
+.head .search-bar {
+    padding-top: 10px;
+    zoom: 1
+}
+
+#search_bar {
+    position: relative;
+    z-index: 31
+}
+
+.head .nav-bar:after, .head .search-bar:after {
+    clear: both;
+    content: "";
+    display: block;
+    height: 0;
+    line-height: 0;
+    visibility: hidden
+}
+
+.head .search-bar a:link, .head .search-bar a:visited {
+    color: #4d4d4d
+}
+
+.head .search-bar .logo {
+    float: left;
+    width: 282px;
+    text-align: right
+}
+
+.head .search-form {
+    position: relative;
+    float: left;
+    z-index: 33
+}
+
+.head .search-tabs {
+    left: 10px;
+    position: absolute;
+    z-index: 2
+}
+
+.head .search-tabs p {
+    float: left;
+    padding-left: 15px
+}
+
+.head .search-tabs span {
+    float: left;
+    display: block;
+    cursor: pointer;
+    padding-right: 15px;
+    line-height: 21px
+}
+
+.search-tabs p.now {
+    background: url(http://static.paipaiimg.com/module/heads_20100803.png) 0 -589px no-repeat
+}
+
+.search-tabs p.now span {
+    background: url(http://static.paipaiimg.com/module/heads_20100803.png) right -612px no-repeat
+}
+
+.head .search-input {
+    position: relative;
+    width: 468px;
+    height: 38px;
+    padding-left: 6px;
+    background: url(http://static.paipaiimg.com/module/heads_20100803.png) 0 -151px repeat-x
+}
+
+.head .search-form input {
+    margin-top: 6px;
+    width: 362px;
+    padding: 3px 0 4px 5px;
+    border-top: 1px solid #808080;
+    border-left: 1px solid #808080;
+    border-bottom: 1px solid #d9d9d9;
+    border-right: 1px solid #d9d9d9
+}
+
+body:nth-of-type(1) .search-form input {
+    height: 17px
+}
+
+.head .search-form button {
+    width: 87px;
+    height: 27px;
+    border: 0;
+    vertical-align: top;
+    margin: 5px 0 0 6px;
+    background: url(http://static.paipaiimg.com/module/heads_20100803.png) -55px -245px no-repeat
+}
+
+.head .auto-result {
+    position: absolute;
+    background-color: #fff;
+    border: 1px solid #9fc1e6;
+    width: 367px;
+    left: 6px;
+    top: 31px;
+    z-index: 32;
+    display: none
+}
+
+.head .auto-result li {
+    line-height: 24px;
+    height: 24px;
+    vertical-align: bottom
+}
+
+.head .auto-result a {
+    display: block;
+    overflow: hidden;
+    line-height: 24px;
+    height: 24px;
+    cursor: pointer
+}
+
+.head .auto-result a:link, .head .auto-result a:visited {
+    color: #014ccc
+}
+
+.head .auto-result a:hover, .head .auto-result a:active, .head .auto-result a:hover em,
+.head .auto-result a:active em, .head .autoResultLink a:link, .head .autoResultLink a:visited {
+    background-color: #316ac5;
+    color: #fff;
+    text-decoration: none
+}
+
+.head .auto-result span {
+    float: left;
+    width: 253px;
+    text-indent: 8px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden
+}
+
+.head .auto-result span.match {
+    font-weight: bold;
+    color: #014CCC;
+    padding-right: 1px;
+    float: none;
+    width: auto
+}
+
+.head .auto-result .autoResultLink span.match, .head .auto-result a:hover span.match {
+    color: #fff
+}
+
+.head .auto-result em {
+    float: left;
+    width: 102px;
+    color: #999;
+    padding-right: 11px;
+    text-align: right;
+    text-overflow: ellipsis;
+    white-space: normal;
+    overflow: hidden
+}
+
+.head .auto-result li.rele_prd {
+    text-align: center
+}
+
+.head .auto-result li.photo {
+    height: auto
+}
+
+.auto-result li.photo a {
+    height: 40px;
+    padding: 5px 0 5px 5px;
+    zoom: 1;
+    position: relative
+}
+
+#primary_site .auto-result li.photo span {
+    white-space: normal;
+    line-height: normal;
+    position: absolute;
+    top: 20%;
+    text-indent: 0;
+    padding-left: 8px;
+    width: 280px
+}
+
+.auto-result li.photo img {
+    float: left;
+    border: 1px solid #ccc
+}
+
+#primary_site .auto-result span {
+    width: 250px
+}
+
+.head .mask-auto {
+    display: none;
+    width: 428px;
+    height: 245px;
+    position: absolute;
+    z-index: 31;
+    left: 6px;
+    top: 32px;
+    filter: alpha(opacity=0);
+    opacity: 0
+}
+
+.head .hot-items {
+    padding-top: 5px
+}
+
+.head .hot-items a {
+    padding: 0 3px
+}
+
+.head .hot-items a:link, .head .hot-items a:visited {
+    color: #4d4d4d
+}
+
+.head .hot-items a:hover, .head .hot-items a:active {
+    color: #ff4e00
+}
+
+.head .search-more {
+    float: left;
+    padding-left: 10px
+}
+
+.head .search-bar .tl {
+    background: url(http://static.paipaiimg.com/module/heads_20100803.png) 0 -111px no-repeat;
+    position: absolute;
+    width: 3px;
+    height: 38px;
+    overflow: hidden;
+    top: 0;
+    left: 0
+}
+
+.head .search-bar .tr {
+    background: url(http://static.paipaiimg.com/module/heads_20100803.png) right -111px no-repeat;
+    position: absolute;
+    width: 3px;
+    height: 38px;
+    overflow: hidden;
+    top: 0;
+    right: 0
+}
+
+.head .nav-bar {
+    position: relative;
+    margin-top: 12px;
+    zoom: 1
+}
+
+.head .nav-bar .tl {
+    background: url(http://static.paipaiimg.com/module/logo/pp_heads_skin_20101015.png?t=20110413) no-repeat;
+    position: absolute;
+    width: 4px;
+    height: 34px;
+    overflow: hidden;
+    top: 0;
+    left: 0
+}
+
+.head .nav-bar .tr {
+    background: url(http://static.paipaiimg.com/module/logo/pp_heads_skin_20101015.png?t=20110413) right -71px no-repeat;
+    height: 34px;
+    position: absolute;
+    width: 4px;
+    overflow: hidden;
+    top: 0;
+    right: 0;
+    z-index: 31
+}
+
+.head .nav-bar map {
+    margin: 0;
+    padding: 0;
+    display: block
+}
+
+.head .nav-bar .nav-site {
+    height: 34px;
+    background: url(http://static.paipaiimg.com/module/logo/pp_heads_skin_20101015.png?t=20110413) 0 -35px repeat-x;
+    padding-left: 10px;
+    font-weight: 700;
+    line-height: normal
+}
+
+.head .nav-bar a {
+    padding-left: 7px;
+    cursor: pointer;
+    float: left
+}
+
+.head .nav-bar a span {
+    padding: 6px 6px 0 0;
+    height: 26px;
+    display: block;
+    float: left
+}
+
+.head .nav-bar a:link, .head .nav-bar a:visited {
+    color: #666
+}
+
+.head .nav-bar a:hover, .head .nav-bar a:active {
+    color: #333;
+    text-decoration: none
+}
+
+.head .nav-bar a:hover, .head .nav-bar a:active, .head .nav-bar .now a:link,
+.head .nav-bar .now a:visited {
+    background: url(http://static.paipaiimg.com/module/logo/pp_heads_skin_20101015.png?t=20110413) 0 -109px
+}
+
+.head .nav-bar a:hover span, .head .nav-bar a:active span, .head .nav-bar li.now a span {
+    background: url(http://static.paipaiimg.com/module/logo/pp_heads_skin_20101015.png?t=20110413) right -141px
+}
+
+.head .nav-bar li {
+    float: left;
+    padding-top: 3px;
+    line-height: normal
+}
+
+.head .nav-bar li a {
+    display: block;
+    position: relative
+}
+
+.head .nav-bar dl {
+    float: left;
+    font-size: 14px
+}
+
+.head .nav-bar dt {
+    float: left;
+    line-height: normal;
+    background: url(http://static.paipaiimg.com/module/logo/pp_heads_skin_20101015.png?t=20110413) right -978px no-repeat
+}
+
+.head dt.home {
+    width: 131px
+}
+
+.head dt.home li {
+    margin-left: 0;
+    font-size: 14px;
+    padding: 2px 0 0 0
+}
+
+.head .home .now a:link, .head .home .now a:visited, .head .home .now a:hover,
+.head .home .now a:active {
+    color: #333333;
+    text-decoration: none
+}
+
+.head .nav-bar li.all {
+    width: 75px;
+    position: relative;
+    z-index: 2;
+    padding: 8px 7px 0 0
+}
+
+.head .nav-bar li.all a {
+    padding-left: 3px;
+    height: 16px;
+    overflow: hidden
+}
+
+.head .nav-bar .all a span {
+    display: inline-block;
+    float: none;
+    overflow: hidden;
+    height: 7px;
+    margin-bottom: 5px;
+    _margin-top: 2px;
+    vertical-align: middle;
+    cursor: pointer;
+    width: 10px;
+    padding: 0;
+    background: url(http://static.paipaiimg.com/module/logo/pp_heads_skin_20101015.png?t=20110413) no-repeat -90px -899px
+}
+
+.head .all a:hover, .head .all a:visited {
+    background-image: none
+}
+
+*+html .head .nav-bar .all a span {
+    margin: -4px 0 0 0
+}
+
+.head .nav-bar .all a:hover span {
+    background: url(http://static.paipaiimg.com/module/logo/pp_heads_skin_20101015.png?t=20110413) no-repeat -90px -899px
+}
+
+*+html .head .nav-bar a span, *+html .head .nav-bar li.now span {
+    padding-top: 8px;
+    height: 24px
+}
+
+*+html .head .nav-bar li.all {
+    padding-top: 10px
+}
+
+.head dt.sale {
+    padding: 0 4px 0 5px
+}
+
+.head dt.sale li {
+    margin: 0;
+    padding: 0 3px 4px
+}
+
+*+html .head dt.sale {
+    padding-top: 3px
+}
+
+.head dt.sale .now a:link, .head dt.sale .now a:visited {
+    color: #333333
+}
+
+.head a.org:link, .head a.org:visited {
+    color: #e74700
+}
+
+.head a.org:hover, .head a.org:active {
+    color: #ff6500;
+    text-decoration: none
+}
+
+.head .pop-new {
+    position: relative;
+    text-align: left
+}
+
+.head dd.pop-new {
+    line-height: normal
+}
+
+*+html .head dd.pop-new li a {
+    padding-top: 2px
+}
+
+.head sup {
+    width: 18px;
+    height: 17px;
+    line-height: normal;
+    position: absolute;
+    top: -12px;
+    right: 4px;
+    vertical-align: top;
+    text-indent: -199em;
+    background: url(http://static.paipaiimg.com/module/logo/pp_heads_skin_20101015.png?t=20110413) no-repeat
+}
+
+.head p.pop-new {
+    width: 322px;
+    font-size: 14px;
+    font-weight: 700
+}
+
+.head sup.hot {
+    background-position: -82px -866px
+}
+
+.head sup.new {
+    background-position: -82px -848px
+}
+
+.head dd {
+    float: left;
+    height: 34px;
+    padding: 0 6px 0 10px;
+    background: url(http://static.paipaiimg.com/module/logo/pp_heads_skin_20101015.png?t=20110413) right -978px no-repeat
+}
+
+.head .nav-site dd li {
+    padding: 2px 0 0 0
+}
+
+.head .nav-bar .add-nav {
+    position: relative;
+    z-index: 32;
+    font-weight: 400;
+    height: 32px;
+    float: left;
+    padding: 2px 0 0 5px
+}
+
+.head .add-nav ul {
+    padding-bottom: 0
+}
+
+.head .add-nav p a {
+    padding-left: 7px;
+    position: relative;
+    float: left
+}
+
+.head .add-nav div {
+    border: 1px solid #cccccc;
+    background-color: #ffffff;
+    position: absolute;
+    visibility: hidden;
+    top: 34px;
+    right: 0
+}
+
+.head .add-nav div {
+    display: none
+}
+
+.head .add-nav div.now {
+    width: 78px;
+    display: block
+}
+
+.head .add-nav li {
+    float: none;
+    margin: 0;
+    line-height: normal;
+    height: 22px
+}
+
+.head .add-nav div a:link, .head .add-nav div a:visited {
+    color: #666666
+}
+
+.head .add-nav ul {
+    padding-top: 0
+}
+
+.add-nav li a {
+    display: block;
+    padding: 4px 9px 2px
+}
+
+.head .add-nav li a:hover, .head .add-nav li a:active {
+    background-color: #f2f2f2;
+    color: #ff4e00
+}
+
+.head dt.home li.qqshop {
+    position: absolute;
+    left: 60px;
+    top: -1px;
+    padding-left: 0;
+    padding-right: 0
+}
+
+.head .qqshop a:hover, .head .qqshop a:active {
+    background-position: 0 -173px
+}
+
+.head .qq_shop {
+    display: block;
+    outline: none;
+    text-indent: -9999em;
+    height: 33px;
+    width: 74px;
+    background: url(http://static.paipaiimg.com/module/logo/pp_heads_skin_20101015.png?t=20110413) 7px -207px no-repeat
+}
+
+.head .nav-bar li.all span.all_btn {
+    width: 109px;
+    height: 27px;
+    position: absolute;
+    top: 2px;
+    left: -18px;
+    background: url(http://static.paipaiimg.com/module/all_catalog_btn.png?t=0926) no-repeat;
+    _filter: progid: DXImageTransform.Microsoft.AlphaImageLoader(src=http: //static.paipaiimg.com/module/all_catalog_btn.png?t=0926);
+    _background-image: none
+}
+
+.head .nav-bar li.all span.short_btn {
+    width: 109px;
+    height: 27px;
+    position: absolute;
+    top: 2px;
+    left: -21px;
+    background: url(http://static.paipaiimg.com/module/all_catalog_short.png?t=0926) no-repeat;
+    _filter: progid: DXImageTransform.Microsoft.AlphaImageLoader(src=http: //static.paipaiimg.com/module/all_catalog_short.png?t=0926);
+    _background-image: none
+}
+
+.all-catalog {
+    z-index: 32;
+    position: relative;
+    width: 946px;
+    margin: 0 auto;
+    padding: 0 2px
+}
+
+.all-catalog .cata_bg {
+    height: 319px;
+    width: 964px;
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    _left: -3px;
+    _top: -7px;
+    background: url(http://static.paipaiimg.com/module/catalog_bg_1.png?t=20101202) no-repeat;
+    _filter: progid: DXImageTransform.Microsoft.AlphaImageLoader(src=http: //static.paipaiimg.com/module/catalog_bg_1.png?t=20101202);
+    _background-image: none
+}
+
+.all-catalog iframe {
+    overflow: hidden;
+    position: absolute;
+    z-index: 34
+}
+
+.all-catalog iframe.a1 {
+    width: 946px;
+    height: 295px;
+    left: 3px
+}
+
+.all-catalog iframe.a2 {
+    left: 138px;
+    _left: 139px;
+    width: 731px;
+    height: 400px
+}
+
+.all-catalog .cata_bg_b {
+    height: 293px;
+    width: 166px;
+    position: absolute;
+    top: -5px;
+    _top: -8px;
+    left: 128px;
+    _left: 130px;
+    z-index: 33;
+    background-image: url(http://static.paipaiimg.com/module/all_catalog_b.png?t=1129);
+    background-repeat: no-repeat;
+    _filter: progid: DXImageTransform.Microsoft.AlphaImageLoader(src=http: //static.paipaiimg.com/module/all_catalog_b.png?t=1129, sizingMethod=scale);
+    _background-image: none
+}
+
+.head .nav-bar dt.home li.now span {
+    padding-bottom: 0
+}
+
+.head .nav-bar li.all span.short_btn {
+    left: -18px
+}
+
+*+html #pp_head .nav-bar .all a span {
+    margin: -4px 0 0
+}
+
+#pp_head .nav-bar .all a:hover span {
+    background: url(http://static.paipaiimg.com/module/logo/pp_heads_skin_20101015.png?t=20110413) no-repeat -90px -899px
+}
+
+.pp_head .nav-bar li.now a:link, .pp_head .nav-bar li.now a:visited {
+    color: #fff
+}
+
+.pp_head .nav-bar li.now {
+    padding-top: 2px
+}
+
+.pp_head .nav-bar li.now a {
+    padding-left: 7px
+}
+
+.pp_head .nav-bar li.now span {
+    padding: 6px 7px 0 0
+}
+
+.pp_head .qq_shop {
+    height: 33px;
+    width: 74px;
+    background: url(http://static.paipaiimg.com/module/logo/pp_heads_skin_20101015.png?t=20110413) 7px -207px no-repeat
+}
+
+.pp_head .qqshop a:hover, .pp_head .qqshop a:active {
+    background-position: 0 -173px
+}
+
+.pp_head dt.home span {
+    display: block
+}
+
+.pp_head .all a:hover, .pp_head .all a:visited {
+    background-image: none
+}
+
+.nav-bar .all ins {
+    display: inline-block;
+    -moz-box-align: center;
+    -moz-box-pack: center;
+    vertical-align: middle;
+    cursor: pointer;
+    width: 7px;
+    height: 8px;
+    margin-left: 2px;
+    overflow: hidden;
+    background: url(http://static.paipaiimg.com/module/heads_20100803.png) right -480px no-repeat
+}
+
+*+html .pp_head .nav-bar a span, *+html .pp_head .nav-bar li.now span {
+    padding-top: 8px;
+    height: 24px
+}
+
+*+html .pp_head .nav-bar li.all {
+    padding-top: 10px
+}
+
+.pp_head_out {
+    width: 980px
+}
+
+.pp_head_out dd {
+    width: 475px
+}
+
+.pp_head_out .nav-bar .add-nav {
+    float: right;
+    margin-right: 10px;
+    _display: inline
+}
+
+.pp_head .all-catalog-out {
+    width: 976px
+}
+
+.pp_cai_logo {
+    width: 248px;
+    height: 40px;
+    line-height: 150px;
+    float: right;
+    background: url(http://pics2.paipaiimg.com/update/20101207/index_movie_slogan.png) 0 0;
+    margin-top: 28px;
+    overflow: hidden
+}
+
+.all-catalog-out .cata_bg {
+    -left:-5px
+}
+
+.all-catalog-out .cata_bg_b {
+    -left:128px}.all-catalog-out iframe.a2 {
+    -left:137px}#pp_footer #foot{width:980px}.top-notice {
+    background-color: #f5f5f5;
+    color: #990000;
+    text-align: left;
+    display: none
+}
+
+.top-notice .proj_txt {
+    padding-top: 7px;
+    width: 684px;
+    margin: 0 auto
+}
+
+.top-notice dl {
+    zoom: 1;
+    text-align: center;
+    color: #333
+}
+
+.top-notice dl: after {
+    clear: both;
+    content: "";
+    display: block;
+    height: 0;
+    line-height: 0;
+    visibility: hidden
+}
+
+.top-notice dt {
+    font-weight: 700
+}
+
+.top-notice .m {
+    position: relative;
+    height: 33px
+}
+
+.top-notice em {
+    color: #ff4e00;
+    font-weight: 700
+}
+
+.top-notice span {
+    position: absolute;
+    overflow: hidden;
+    cursor: pointer;
+    width: 13px;
+    height: 13px;
+    top: 9px;
+    right: 0;
+    background: url(http://static.paipaiimg.com/module/heads_20100803.png) -75px -392px no-repeat
+}
+
+.notice_board {
+    margin: 10px auto;
+    width: 950px;
+    height: 29px;
+    position: relative;
+    border: 1px solid #f4e08f;
+    background-color: #fef9e1;
+    color: #666666;
+    text-align: left
+}
+
+.notice_board p {
+    padding: 5px 0 0 28px
+}
+
+.notice_board .alert_ico {
+    position: absolute;
+    left: 6px;
+    top: 7px;
+    width: 15px;
+    height: 15px;
+    background: url(http://static.paipaiimg.com/module/logo/pp_heads_skin_20101015.png?t=20110413) 0 -826px no-repeat
+}
+
+.notice_board .close_ico {
+    position: absolute;
+    right: 9px;
+    top: 9px;
+    width: 9px;
+    height: 9px;
+    cursor: pointer;
+    background: url(http://static.paipaiimg.com/module/logo/pp_heads_skin_20101015.png?t=20110413) -24px -829px no-repeat
+}
+
+.notice_board a: link, .notice_board a: active {
+    color: #f64708;
+    text-decoration: underline
+}
+
+.notice_board a: hover, .notice_board a: visited {
+    color: #f64708;
+    text-decoration: none
+}
+
+#pp_head_sline {
+    background: #ffffff
+}
+
+#sim_head_module .logo {
+    text-align: left;
+    text-indent: 10px
+}
+
+#sim_head_module .search-input {
+    background: none;
+    width: 416px;
+    float: left
+}
+
+#sim_head_module .search-form input {
+    width: 286px;
+    margin-left: 3px;
+    _margin-left: 5px;
+    padding: 1px 0 2px 5px
+}
+
+#sim_head_module .search-input button {
+    width: 59px;
+    margin-top: 3px;
+    background-position: -144px -245px
+}
+
+#sim_head_module .search-bar {
+    background: url(http://static.paipaiimg.com/module/heads_20100803.png) 0 -301px repeat-x
+}
+
+#sim_head_module .search-bar {
+    padding: 10px 0 14px
+}
+
+#sim_head_module .search-form {
+    float: right
+}
+
+#sim_head_module .auto-result {
+    width: 291px;
+    left: 60px;
+    top: 26px;
+    _top: 28px;
+    _left: 62px
+}
+
+#sim_head_module .auto-result span {
+    width: 175px
+}
+
+#sim_head_module .auto-result em {
+    width: 102px
+}
+
+#sim_head_module .mask-auto {
+    width: 291px;
+    left: 62px;
+    top: 28px
+}
+
+.bor_dot {
+    border-top: 3px solid #DF0000;
+    border-left: 2px solid #fff;
+    border-right: 2px solid #fff
+}
+
+#primary_site {
+    margin-bottom: 7px
+}
+
+#primary_site .search-bar {
+    height: 80px
+}
+
+#primary_site .logo {
+    width: 292px
+}
+
+#primary_site .search-input {
+    top: 20px;
+    z-index: 1
+}
+
+#primary_site .hot-items {
+    position: absolute;
+    width: 600px;
+    top: 56px
+}
+
+#primary_site .search-more {
+    padding: 20px 0 0 15px
+}
+
+#foot {
+    clear: both;
+    margin-top: 10px;
+    text-align: center;
+    border-top: 1px solid #e0dfe4
+}
+
+.foot_nav {
+    line-height: normal;
+    padding-top: 18px
+}
+
+.foot_nav ul {
+    zoom: 1
+}
+
+.foot_nav ul: after, .foot_nav .group_site: after {
+    clear: both;
+    content: "";
+    display: block;
+    height: 0;
+    line-height: 0;
+    visibility: hidden
+}
+
+.foot_nav li {
+    border-left: 1px solid #d9d9d9;
+    float: left;
+    margin-left: -1px;
+    padding: 0 8px;
+    height: 14px;
+    line-height: 14px;
+    margin: 3px 0 1px -1px;
+    overflow: hidden;
+    white-space: nowrap
+}
+
+.foot_nav .foot_agreement {
+    width: 515px;
+    margin: 0 auto;
+    overflow: hidden
+}
+
+.foot_nav .group_site {
+    zoom: 1;
+    width: 630px;
+    margin: 0 auto;
+    padding: 10px 0 18px
+}
+
+.foot_nav h4 {
+    font-weight: 400;
+    float: left;
+    padding-top: 3px
+}
+
+.foot_nav .group_site ul {
+    float: left;
+    width: 540px;
+    overflow: hidden
+}
+
+.copyright {
+    line-height: 20px;
+    margin: 0 auto;
+    width: 500px
+}
+
+.copyright div {
+    float: left
+}
+
+.copyright div.saftsite {
+    margin-right: 18px
+}
+
+.copyright div.cnnic {
+    margin-left: 18px
+}
+
+.copyright .cnnic a {
+    display: block;
+    width: 83px;
+    height: 29px;
+    background: url(http://static.paipaiimg.com/module/logo/pp_heads_skin_20101015.png?t=20110413) 0 -897px no-repeat
+}
+
+.copyright p {
+    margin-bottom: 5px
+}
+
+#foot .copyright a: link, #foot .copyright a: visited {
+    color: #014cc9
+}
+
+#foot .copyright a: hover, #foot .copyright a: active {
+    color: #ff4e00
+}
+
+.copyright div a span {
+    width: 29px;
+    height: 46px;
+    cursor: pointer;
+    margin-left: 5px;
+    display: inline-block;
+    -moz-box-align: center;
+    -moz-box-pack: center;
+    vertical-align: middle;
+    background-image: url(http://static.paipaiimg.com/module/logo/pp_heads_skin_20101015.png?t=20110413);
+    background-repeat: no-repeat
+}
+
+#foot .ploice1 {
+    background-position: 0 -847px
+}
+
+#foot .ploice2 {
+    background-position: -36px -847px
+}
+
+.a-950 {
+    margin-bottom: 10px
+}
+
+.pp_toolbar a: link, .pp_toolbar a: visited {
+    color: #666666;
+    text-decoration: none
+}
+
+.pp_toolbar a: hover, .pp_toolbar a: active {
+    color: #ff4e00;
+    text-decoration: underline
+}
+
+.pp_toolbar .pp_buy_sell a {
+    float: left;
+    padding: 3px 9px 1px;
+    _padding-top: 4px;
+    background: url(http://static.paipaiimg.com/module/logo/pp_heads_skin_20101015.png?t=20110413) 0 -800px no-repeat
+}
+
+*+html .pp_toolbar .pp_buy_sell a {
+    padding-top: 4px
+}
+
+.pp_toolbar .pp_site_link li {
+    float: left;
+    padding: 8px 9px 1px;
+    background: url(http://static.paipaiimg.com/module/logo/pp_heads_skin_20101015.png?t=20110413) 0 -796px no-repeat
+}
+
+.pp_toolbar a.buy, .pp_toolbar li.login {
+    background-image: none
+}
+
+.pp_toolbar {
+    background: url(http://static.paipaiimg.com/module/logo/pp_heads_skin_20101015.png?t=20110413) 0 -768px repeat-x;
+    height: 28px;
+    line-height: normal;
+    position: relative;
+    z-index: 45;
+    font-family: Simsun;
+    color: #666;
+    text-align: left
+}
+
+.pp_toolbar .pp_buy_sell {
+    float: left;
+    padding-top: 4px
+}
+
+.pp_toolbar .pp_site_link {
+    float: right
+}
+
+.pp_site_link span {
+    display: inline-block;
+    -moz-box-align: center;
+    -moz-box-pack: center;
+    vertical-align: top;
+    margin-top: 4px;
+    cursor: pointer;
+    width: 7px;
+    height: 4px;
+    padding-left: 4px;
+    overflow: hidden;
+    background: url(http://static.paipaiimg.com/module/logo/pp_heads_skin_20101015.png?t=20110413) -89px -902px no-repeat
+}
+
+.pp_toolbar li.my_admin, .pp_toolbar li.help {
+    padding-top: 2px;
+    position: relative
+}
+
+.pp_site_link li p {
+    position: relative;
+    padding-top: 5px;
+    z-index: 32
+}
+
+*+html .pp_site_link li p {
+    padding-top: 6px
+}
+
+.pp_site_link ul li a {
+    display: block;
+    padding: 4px 9px 2px
+}
+
+.pp_site_link ul li a: hover, .pp_site_link ul li a: active {
+    background-color: #f2f2f2;
+    text-decoration: underline
+}
+
+.pp_site_link ul {
+    display: none;
+    padding-top: 22px
+}
+
+.pp_site_link div.now {
+    z-index: 31;
+    border: 1px solid #cccccc;
+    background-color: #ffffff;
+    padding-bottom: 5px;
+    left: 0;
+    top: 0
+}
+
+.pp_site_link div.now ul {
+    display: block
+}
+
+.pp_toolbar .pp_site_link div {
+    position: absolute;
+    width: 78px
+}
+
+.pp_toolbar .pp_site_link div li {
+    float: none;
+    background: none;
+    padding: 0 0 1px
+}
+
+.spread_img {
+    margin: 0 auto;
+    width: 950px
+}
+
+.pp_sub_head {
+    text-align: left;
+    height: 68px
+}
+
+.pp_sub_head .pp_sub_slogo {
+    float: left;
+    margin-top: 18px
+}
+
+.pp_sub_head .pp_sub_slogo .pp_slogo {
+    display: block;
+    width: 167px;
+    height: 34px;
+    background: url(http://static.paipaiimg.com/module/logo/pp_sub_head.png) no-repeat 0 0;
+    text-indent: -222222em;
+    overflow: hidden
+}
+
+.pp_sub_head .pp_sub_search {
+    float: right
+}
+
+.pp_sub_head .pp_sub_sform {
+    float: right;
+    padding-top: 20px
+}
+
+.pp_sub_head .pp_sub_stextc {
+    float: left;
+    border: 1px solid #ccc
+}
+
+.pp_sub_head .pp_sub_stext {
+    float: left;
+    height: 24px;
+    width: 242px;
+    padding-left: 6px;
+    line-height: 24px;
+    border: 0 none;
+    background: url(http://static.paipaiimg.com/module/logo/pp_sub_head.png) no-repeat 0 -36px
+}
+
+.pp_sub_head .pp_sub_sbtn {
+    margin-left: 5px;
+    float: left;
+    width: 52px;
+    height: 28px;
+    line-height: 29px;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    color: #fff;
+    background: url(http://static.paipaiimg.com/module/logo/pp_sub_head.png) no-repeat -173px 0;
+    display: inline
+}
+
+.pp_sub_stypec {
+    float: left;
+    width: 80px;
+    background: url(http://static.paipaiimg.com/module/logo/pp_heads_skin_20101015.png?t=20110413) 0 -768px repeat-x;
+    border: solid #ccc;
+    border-width: 1px 0 1px 1px;
+    position: relative
+}
+
+.pp_sub_stypen {
+    height: 26px;
+    padding-left: 8px;
+    cursor: pointer
+}
+
+.pp_sub_stypet {
+    display: inline-block;
+    height: 26px;
+    line-height: 26px
+}
+
+.pp_sub_arrd {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    top: 7px;
+    right: 3px;
+    background: url(http://static.paipaiimg.com/module/logo/pp_sub_head.png) no-repeat -264px 4px
+}
+
+.pp_sub_stypes {
+    position: absolute;
+    top: 27px;
+    left: -1px;
+    width: 82px;
+    border-bottom: 1px solid #ccc;
+    background: #fefefe
+}
+
+.pp_sub_stypes a {
+    display: block;
+    padding: 4px 8px 2px;
+    border: solid #ccc;
+    border-width: 0 1px
+}
+
+.pp_sub_stypes a: hover {
+    background: #f1f1f1;
+    color: #fe4e0a;
+    text-decoration: none
+}
+
+.pp_sub_head .pp_sub_search .pp_sub_smore {
+    float: left;
+    margin-left: 10px;
+    line-height: 15px
+}
+
+.pp_sub_clogo {
+    position: relative;
+    height: 0
+}
+
+.pp_sub_clogo a {
+    display: block;
+    width: 58px;
+    height: 23px;
+    text-indent: -22222em;
+    overflow: hidden;
+    position: absolute;
+    top: -45px;
+    left: 178px;
+    border-left: 1px solid #ccc
+}
+
+.pp_cat_head {
+    position: relative;
+    z-index: 32;
+    height: 84px;
+    text-align: left;
+    background-color: #fff
+}
+
+.pp_head_sline .pp_cat_head {
+    border-bottom: 3px solid #3794D1;
+    margin-bottom: 8px;
+    height: 96px
+}
+
+.pp_head_sim_min .pp_cat_head {
+    border-bottom: 0;
+    margin-bottom: 0
+}
+
+.pp_cat_logo {
+    float: left;
+    padding: 20px 0 0 10px
+}
+
+.pp_cat_logo a {
+    display: block;
+    width: 204px;
+    height: 58px;
+    overflow: hidden
+}
+
+.pp_cat_search {
+    float: right;
+    padding-top: 28px
+}
+
+.pp_cat_sformc {
+    float: left;
+    width: 502px
+}
+
+.pp_cat_sform {
+    float: left;
+    height: 38px;
+    padding-left: 4px;
+    background: #f4f4f4;
+    border: solid #ddd;
+    border-width: 1px 0;
+    width: 492px
+}
+
+.pp_cat_spl, .pp_cat_spr {
+    float: left;
+    width: 2px;
+    height: 40px;
+    background: url(http://static.paipaiimg.com/module/logo/pp_heads_skin_20101015.png?t=20110413) no-repeat 0 -1014px
+}
+
+.pp_cat_spr {
+    background-position: -4px -1014px
+}
+
+.pp_cat_stypec {
+    float: left;
+    width: 79px;
+    height: 26px;
+    margin-top: 5px;
+    border: solid #999;
+    border-width: 1px 0 1px 1px;
+    background: url(http://static.paipaiimg.com/module/logo/pp_heads_skin_20101015.png?t=20110413) no-repeat 0 -1057px;
+    position: relative
+}
+
+.pp_cat_stypen {
+    float: left;
+    cursor: pointer
+}
+
+.pp_cat_stypet {
+    float: left;
+    padding: 3px 0 0 8px;
+    color: #666;
+    padding-top: 5px\9;
+    _padding-top: 3px
+}
+
+.pp_cat_arr {
+    display: block;
+    position: absolute;
+    top: 10px;
+    right: 7px;
+    height: 0;
+    width: 0;
+    overflow: hidden;
+    font-size: 0;
+    line-height: 0;
+    border-style: solid dashed dashed;
+    border-width: 4px;
+    border-color: #666666 transparent transparent
+}
+
+.pp_cat_stypes {
+    position: absolute;
+    top: 27px;
+    left: -1px;
+    width: 81px;
+    border-bottom: 1px solid #999;
+    background: #fff
+}
+
+.pp_cat_stypes a {
+    display: block;
+    padding: 5px 8px 2px;
+    border: solid #999;
+    border-width: 0 1px
+}
+
+.pp_cat_stypes a: link, .pp_cat_stypes a: visited {
+    color: #666
+}
+
+.pp_cat_stypes a: hover {
+    background: #f2f2f2;
+    color: #fe4e0a;
+    text-decoration: none
+}
+
+.pp_cat_stypec: hover, .pp_cat_sthover {
+    background: #fff
+}
+
+.pp_cat_stextc {
+    float: left;
+    margin-top: 5px;
+    width: 308px;
+    height: 26px;
+    border: 1px solid #999;
+    overflow: hidden;
+    background: #fff url(http://static.paipaiimg.com/module/logo/pp_heads_skin_20101015.png?t=20110413) no-repeat -97px -1057px
+}
+
+.pp_cat_stextc input {
+    float: left;
+    width: 298px;
+    padding: 4px 5px;
+    height: 18px;
+    line-height: 18px;
+    border: 0 none;
+    background: url(http://static.paipaiimg.com/module/logo/pp_heads_skin_20101015.png?t=20110413) repeat-x 0 -1087px
+}
+
+.pp_cat_sform_s .pp_cat_stextc {
+    width: 388px
+}
+
+.pp_cat_sform_s .pp_cat_stextc input {
+    width: 378px
+}
+
+.pp_cat_sbtn {
+    float: left;
+    margin: 5px 0 0 5px;
+    border: 0 none;
+    width: 93px;
+    height: 28px;
+    background: #fff url(http://static.paipaiimg.com/module/logo/pp_heads_skin_20101015.png?t=20110413) no-repeat -7px -1014px;
+    text-indent: -22222em
+}
+
+.pp_cat_smore {
+    float: left;
+    margin-left: 10px
+}
+
+.pp_cat_smore a: link, .pp_cat_smore a: visited {
+    color: #666666
+}
+
+.pp_cat_smore a: hover {
+    color: #FF4E00;
+    text-decoration: underline
+}
+
+.pp_cat_suggestions {
+    clear: both;
+    height: 0;
+    position: relative
+}
+
+#sim_head_module {
+    position: relative;
+    z-index: 33
+}
+
+#pp_cat_suggestions .auto-result {
+    border-color: #999;
+    width: 388px;
+    top: -7px;
+    left: 6px
+}
+
+#pp_cat_suggestions .auto-result span {
+    width: 274px
+}
+
+#pp_cat_suggestions .auto-result span strong {
+    color: #ff6e00
+}
+
+#pp_cat_suggestions .mask-auto {
+    top: -6px;
+    left: 6px
+}
+
+.pp_cnav_digi .nav-bar li.now a: link, .pp_cnav_digi .nav-bar li.now a: visited {
+    background-position: 0 -306px
+}
+
+.pp_cnav_digi .nav-bar li.now a span, .pp_cnav_digi .nav-bar li.now a: hover span {
+    background-position: right -339px
+}
+
+.pp_cnav_cos .nav-bar li.now a: link, .pp_cnav_cos .nav-bar li.now a: visited {
+    background-position: 0 -240px
+}
+
+.pp_cnav_cos .nav-bar li.now a span, .pp_cnav_cos .nav-bar li.now a: hover span {
+    background-position: right -273px
+}
+
+.pp_cnav_jiaju .nav-bar li.now a: link, .pp_cnav_jiaju .nav-bar li.now a: visited {
+    background-position: 0 -372px
+}
+
+.pp_cnav_jiaju .nav-bar li.now a span, .pp_cnav_jiaju .nav-bar li.now a: hover span {
+    background-position: right -405px
+}
+
+.pp_cnav_lady .nav-bar li.now a: link, .pp_cnav_lady .nav-bar li.now a: visited {
+    background-position: 0 -438px
+}
+
+.pp_cnav_lady .nav-bar li.now a span, .pp_cnav_lady .nav-bar li.now a: hover span {
+    background-position: right -471px
+}
+
+.pp_cnav_chong .nav-bar li.now a: link, .pp_cnav_chong .nav-bar li.now a: visited {
+    background-position: 0 -570px
+}
+
+.pp_cnav_chong .nav-bar li.now a span, .pp_cnav_chong .nav-bar li.now a: hover span {
+    background-position: right -603px
+}
+
+.3c_skin .nav-site li.now a: link, .3c_skin .nav-site li.now a: visited {
+    background-position: 0 -306px
+}
+
+.3c_skin .nav-site li.now a span, .3c_skin .nav-site li.now a: hover span {
+    background-position: right -339px
+}
+
+.beauty_skin .nav-site li.now a: link, .beauty_skin .nav-site li.now a: visited {
+    background-position: 0 -240px
+}
+
+.beauty_skin .nav-site li.now a span, .beauty_skin .nav-site li.now a: hover span {
+    background-position: right -273px
+}
+
+.jiaju_skin .nav-site li.now a: link, .jiaju_skin .nav-site li.now a: visited {
+    background-position: 0 -372px
+}
+
+.jiaju_skin .nav-site li.now a span, .jiaju_skin .nav-site li.now a: hover span {
+    background-position: right -405px
+}
+
+.lady_skin .nav-site li.now a: link, .lady_skin .nav-site li.now a: visited {
+    background-position: 0 -438px
+}
+
+.lady_skin .nav-site li.now a span, .lady_skin .nav-site li.now a: hover span {
+    background-position: right -471px
+}
+
+.chong_skin .nav-site li.now a: link, .chong_skin .nav-site li.now a: visited {
+    background-position: 0 -570px
+}
+
+.chong_skin .nav-site li.now a span, .chong_skin .nav-site li.now a: hover span {
+    background-position: right -603px
+}
+
+.add-nav span.now a: link, .add-nav span.now a: visited, .add-nav span.now a span, .add-nav span.now a: hover span {
+    background: url(http://static.paipaiimg.com/module/logo/pp_heads_skin_20101015.png?t=20110413) no-repeat
+}
+
+.vip_skin .add-nav span.now a: link, .vip_skin .add-nav span.now a: visited {
+    background-position: 0 -702px;
+    color: #fff
+}
+
+.vip_skin .add-nav span.now a span, .vip_skin .add-nav span.now a: hover span {
+    background-position: right -735px
+}
+
+.sale_skin .add-nav span.now a: link, .sale_skin .add-nav span.now a: visited {
+    background-position: 0 -636px;
+    color: #fff
+}
+
+.sale_skin .add-nav span.now a span, .sale_skin .add-nav span.now a: hover span {
+    background-position: right -669px
+}
+
+.cp_skin .nav-site li.now a: link, .cp_skin .nav-site li.now a: visited, .hongbao_skin .add-nav span.now a: link, .hongbao_skin .add-nav span.now a: visited, .tuan_skin .add-nav span.now a: link, .tuan_skin .add-nav span.now a: visited, .promote_skin .add-nav span.now a: link, .promote_skin .add-nav span.now a: visited, .fresher_skin .add-nav span.now a: link, .fresher_skin .add-nav span.now a: visited {
+    background-position: 0 -504px;
+    color: #fff
+}
+
+.cp_skin .nav-site li.now a span, .cp_skin .nav-site li.now a: hover span, .hongbao_skin .add-nav span.now a span, .hongbao_skin .add-nav span.now a: hover span, .tuan_skin .add-nav span.now a span, .tuan_skin .add-nav span.now a: hover span, .promote_skin .add-nav span.now a span, .promote_skin .add-nav span.now a: hover span, .fresher_skin .add-nav span.now a span, .fresher_skin .add-nav span.now a: hover span {
+    background-position: right -537px
+}
+
+.footer-services {
+    clear: both;
+    overflow: hidden;
+    margin-top: 10px;
+    padding: 12px 0;
+    color: #999;
+    border: 1px solid #D4D4D4;
+    text-align: left;
+    background: #FFFFFF;
+    background: -moz-linear-gradient(top, #FFFFFF 80%, #FAFAFA 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(80%, #FFFFFF), color-stop(100%, #FAFAFA));
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#FFFFFF', endColorstr='#FAFAFA', GradientType=0 )
+}
+
+.footer-services ul a: link, .footer-services ul a: visited {
+    color: #999
+}
+
+.footer-services ul a: hover, .footer-services ul a: active {
+    color: #ff4e00
+}
+
+.footer-services ul {
+    *zoom: 1;
+            overflow: hidden
+}
+
+.footer-services li {
+    float: left;
+    width: 24.97%;
+    overflow: hidden
+}
+
+.footer-services dl {
+    min-height: 110px;
+    _height: 110px;
+    border-right: 1px dotted #ddd;
+    position: relative
+}
+
+.footer-services .footer-scare dl {
+    border-right: none
+}
+
+.footer-services dt {
+    color: #333;
+    font: 16px/2 "Microsoft Yahei";
+    padding-top: 10px
+}
+
+.footer-services dd {
+    line-height: 1.6;
+    clear: both;
+    padding-left: 59px
+}
+
+.footer-services .ico {
+    display: block;
+    position: absolute;
+    left: 19px;
+    top: 8px;
+    background: url(http://static.paipaiimg.com/module/logo/pp_heads_skin_20101015.png?t=20110413) no-repeat scroll 0 -1124px
+}
+
+.footer-snewbie .ico {
+    width: 23px;
+    height: 23px;
+    background-position: 0 -1124px;
+    left: 20px
+}
+
+.footer-ssafe .ico {
+    width: 22px;
+    height: 23px;
+    background-position: -24px -1124px;
+    left: 21px
+}
+
+.footer-spay .ico {
+    width: 25px;
+    height: 25px;
+    background-position: -47px -1124px;
+    left: 20px
+}
+
+.footer-scare .ico {
+    width: 26px;
+    height: 23px;
+    background-position: -74px -1124px
+}
+
+.footer-services .tit {
+    display: block;
+    height: 17px;
+    line-height: 60px;
+    margin: 0 0 7px 59px;
+    width: 64px;
+    overflow: hidden;
+    background: url(http://static.paipaiimg.com/module/logo/pp_heads_skin_20101015.png?t=20110413) no-repeat scroll 0 -1150px
+}
+
+.footer-snewbie .tit {
+    background-position: 0 -1150px
+}
+
+.footer-ssafe .tit {
+    width: 95px;
+    background-position: 0 -1167px
+}
+
+.footer-spay .tit {
+    background-position: 0 -1185px
+}
+
+.footer-scare .tit {
+    background-position: 0 -1203px
+}
+
+/*  |xGv00|b1ebf21c7e6ae4f05cd90ab4e991ef06 */

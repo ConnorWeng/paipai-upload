@@ -8,12 +8,12 @@
     <meta name="keywords" content="网上购物,网上开店,网上商城" />
     <link rel="icon" href="http://pics.paipai.com/favicon.ico" type="image/x-icon" />
     <link rel="shortcut icon" href="http://pics.paipai.com/favicon.ico" type="image/x-icon" />
-    <link rel="stylesheet" href="http://static.paipaiimg.com/css/heads.css?t=ver_2_20110426" type="text/css" media="screen" />
-    <link rel="stylesheet" href="http://static.paipaiimg.com/module/flow_step_v2.css"  type="text/css" media="screen" />
-    <link media="screen" type="text/css" href="http://static.paipaiimg.com/css/heads.css?t=ver_2_20101112" rel="stylesheet"/>
-    <link media="screen" type="text/css" href="http://static.paipaiimg.com/module/flow_step.css" rel="stylesheet"/>
-    <link media="screen" type="text/css" href="http://static.paipaiimg.com/module/msg_tips.css" rel="stylesheet"/>
-    <link media="screen" type="text/css" href="http://static.paipaiimg.com/upload/upload_choose_sort.css" rel="stylesheet"/>
+    <import type="css" file="Css.heads_ver_2_20110426" basepath="{$basepath}"/>
+    <import type="css" file="Css.flow_step_v2" basepath="{$basepath}"/>
+    <import type="css" file="Css.heads_ver_2_20101112" basepath="{$basepath}"/>
+    <import type="css" file="Css.flow_step" basepath="{$basepath}"/>
+    <import type="css" file="Css.msg_tips" basepath="{$basepath}"/>
+    <import type="css" file="Css.upload_choose_sort" basepath="{$basepath}"/>
     <style>
     .wp_category_list {
       padding: 0px;
@@ -142,7 +142,7 @@
           <div class="cont" ></div>
         </div>
         <div class="has_result" id="searchLoad" style="display:none">
-          <div class="loading" ><img src="http://static.paipaiimg.com/upload/loading.gif" /><span class="txt_searching">搜索中...</span></div>
+          <div class="loading" ><img src="{$basepath}/Image/loading.gif" /><span class="txt_searching">搜索中...</span></div>
         </div>
         <div class="has_result" id="searchSome" >
           <div id="searchEnd"></div>
