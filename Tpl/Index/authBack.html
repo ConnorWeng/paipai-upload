@@ -32,6 +32,7 @@
     <form class="mainform fd-hide" action="{:U('Index/editPage')}" method="POST">
         <input type="hidden" class="navigationId-input" name="navigationId"/>
         <input type="hidden" class="taobaoItemId-input" name="taobaoItemId" value="{$taobaoItemId}"/>
+        <input type="hidden" class="catStr-input" name="catStr" value=""/>
     </form>
     <!-- s inc_first_head_sim -->
     <!--div class="pp_toolbar" id="pp_toolbar">
@@ -387,6 +388,14 @@ $(function () {
         if ($('.btn_confirm').length > 0) {
             var $selectedLi = $('li.selected[leaf=1]');
             $('.mainform > .navigationId-input').val($selectedLi.attr('cid'));
+
+            var catStr = '';
+            $('li.selected').each(function (index, element) {
+                catStr += $(element).text() + '>>';
+            });
+            catStr = catStr.substr(0, catStr.length - 2);
+            $('.catStr-input').val(catStr);
+
             $('.mainform').submit();
         }
     });

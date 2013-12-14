@@ -91,7 +91,8 @@ class IndexAction extends Action {
             'stockPrice' => $price + floatval($profit),
             'seePrice' => $seePrice,
             'rawPrice' => $price,
-            'khn' => $khn
+            'khn' => $khn,
+            'catStr' => I('catStr'),
         ));
 
         $this->display();
