@@ -1,7 +1,7 @@
 $(function ($) {
 
     // Only support 2 level specs only, which means selectedSpecs length must be 2.
-    window.tradetable = function (parent, selectedSpecs, specExtendedAttrs, initSkus, propsAlias) {
+    window.tradetable = function (parent, selectedSpecs, specExtendedAttrs, initSkus, propsAlias, seePrice) {
         // selectedSpecs: [{fid:'',name:'',values:[]}, {fid:'',name:'',values:[]}]
         // specExtendedAttrs: [{fid:'',name:'',showType:''}]
         this.parent = parent;
@@ -9,6 +9,38 @@ $(function ($) {
         this.specExtendedAttrs = specExtendedAttrs;
         this.initSkus = initSkus;
         this.propsAlias = propsAlias;
+        this.seePrice = seePrice;
+
+        $(document).on('change', '.same-checkbox', function (e) {
+            var checkbox = e.target
+                $checkbox = $(checkbox);
+            if (checkbox.checked) {
+                var $allSameCheckbox = $('.same-checkbox'),
+                    index = 0;
+                for (; index < $allSameCheckbox.length; index++) {
+                    if ($allSameCheckbox[index] === checkbox) {
+                        break;
+                    }
+                }
+
+                var value = '',
+                    $trs = $('.tb-speca-quotation tbody tr');
+                for (var i = 0; i < $trs.length; i++) {
+                    var $tr = $trs.eq(i),
+                        val = $tr.find('input').eq(index).val();
+                    if (val != '') {
+                        value = val;
+                        break;
+                    }
+                }
+                if (value !== '') {
+                    $('.tb-speca-quotation tbody tr').each(function (i, tr) {
+                        var $tr = $(tr);
+                        $tr.find('input').eq(index).val(value);
+                    });
+                }
+            }
+        });
     }
 
     window.tradetable.prototype = {
@@ -29,11 +61,11 @@ $(function ($) {
                 html += '<th class="t-' + (level + i + 1) + '">';
 
                 html += '<span>' + this.specExtendedAttrs[i].name + '</span>';
-              /*html += '<br/>';
+                html += '<br/>';
                 html += '<span>';
-                html += '<input type="checkbox"></input>';
+                html += '<input class="same-checkbox" type="checkbox"></input>';
                 html += '<label>全部相同</label>';
-                html += '</span>';*/
+                html += '</span>';
 
                 html += '</th>';
             }
@@ -68,14 +100,23 @@ $(function ($) {
                 for (var o in this.specExtendedAttrs) {
                     var val = '';
                     if (sku != null) {
+                        var price = sku.price;
+                        if (this.seePrice != '') {
+                            if (this.seePrice == '减半') {
+                                price = price / 2;
+                            } else {
+                                var delta = parseFloat(this.seePrice.substr(1));
+                                price = price - delta;
+                            }
+                        }
                         if (this.specExtendedAttrs[o].fname == 'price') {
-                            val = sku.price;
+                            val = parseFloat(price) + parseFloat(window.profit);
                         }
                         if (this.specExtendedAttrs[o].fname == 'amountOnSale') {
                             val = sku.quantity;
                         }
                         if (this.specExtendedAttrs[o].fname == 'retailPrice') {
-                            val = sku.price * 2;
+                            val = price * 2;
                         }
                     }
                     html += '<td><input class="txt spec-extend-attr" fname="' + this.specExtendedAttrs[o].fname + '" type="text" value="' + val + '"/></td>';
@@ -100,14 +141,23 @@ $(function ($) {
                     for (var o in this.specExtendedAttrs) {
                         var val = '';
                         if (sku != null) {
+                            var price = sku.price;
+                            if (this.seePrice != '') {
+                                if (this.seePrice == '减半') {
+                                    price = price / 2;
+                                } else {
+                                    var delta = parseFloat(this.seePrice.substr(1));
+                                    price = price - delta;
+                                }
+                            }
                             if (this.specExtendedAttrs[o].fname == 'price') {
-                                val = sku.price;
+                                val = parseFloat(price) + parseFloat(window.profit);
                             }
                             if (this.specExtendedAttrs[o].fname == 'amountOnSale') {
                                 val = sku.quantity;
                             }
                             if (this.specExtendedAttrs[o].fname == 'retailPrice') {
-                                val = sku.price * 2;
+                                val = price * 2;
                             }
                         }
                         html += '<td>';

@@ -32,6 +32,7 @@
     <script type="text/javascript"
             src="http://lib.sinaapp.com/js/jquery/1.7.2/jquery.min.js"></script>
     <import type="js" file="Js.ckeditor.ckeditor" basepath="{$basepath}"/>
+    <import type="js" file="Js.tradetable" basepath="{$basepath}"/>
 <style>
 .settings-container {
   width: 100%;
@@ -230,11 +231,17 @@ body {
 </div>
 
 <!-- 商品库存 -->
-<div class="bd stock" id="stockShowFrame_1" style="display:none">
+<div class="bd stock" id="stockShowFrame_1">
   <div class="fm_tit">商品库存：</div>
   <div class="fm_cnt">
     <div><input type="checkbox" name="stockSwitch" id="stockSwitch"><label for="stockSwitch">启用库存配置</label>&nbsp;&nbsp;<a href="http://help.paipai.com/content/help_30122.shtml" target="_blank">查看使用帮助&gt;&gt;</a><font color="#FF0000"></font></div>
-    <div id="divStockArea"></div>
+    <div id="divStockArea">
+      <div id="divSaleAttrSelectorArea">
+        <ul class="attr_list attr_list_compact tb_colors" id="saleattrs"></ul>
+      </div>
+      <div id="divStockTableArea" class="item-list">
+      </div>
+    </div>
     <!--<div class="upload_tips" style="margin: 5px 20px 10pt 0;"><img class="upload_tips_icon" src="http://static.paipaiimg.com/module/b.png"><em style="color:#FF5500">【新功能】分库存属性可独立修改了。采用独立修改的方式，将不会影响下面库存属性表中的信息。赶快试用吧！</em><a href="http://bbs.paipai.com/thread-2148477-1-1.html" target="_blank" tag="new_feature_tips" nft_id="20120514001" top="20" left="-144">查看说明</a></div>
         <div class="stock_area" id="stockArea"></div>
         <div id="stockAttrUploader"></div>-->
@@ -873,6 +880,8 @@ body {
 <!--[if !IE]>|xGv00|b6facc6c3fec5ade60bc74dec153333c<![endif]--><!--[if !IE]>|xGv00|b2d2dcdb69c853011f3704755e222b05<![endif]-->
 <script>
 $(function () {
+    window.profit = '{$profit}';
+
     var navigationId = '{$navigationId}',
         editor = CKEDITOR.replace('sDesc');
 
@@ -896,6 +905,11 @@ $(function () {
             for (var i in attrList) {
                 var featuresString = '';
                     feature = attrList[i];
+
+                // 跳过自定义库存属性
+                if (feature.attrId == 42914) {
+                    continue;
+                }
 
                 featuresString += '<li fid="' + feature.attrId + '">';
                 featuresString += '<div class="attr_tit">';
@@ -934,16 +948,100 @@ $(function () {
                 featuresString += '</div>';
                 featuresString += '</li>';
 
-                normalFeaturesString += featuresString;
+                if (feature.saleAttr == 1) {
+                    specFeaturesString += featuresString;
+                } else {
+                    normalFeaturesString += featuresString;
+                }
             }
 
             $('#classAttrDiv').children().remove();
             $('#classAttrDiv').append(normalFeaturesString);
+            $('#saleattrs').append(specFeaturesString);
+
+            // 匹配sku
+            var initSkus = {$initSkus},
+                propsAlias = '{$propsAlias}';
+
+            for (var i in initSkus) {
+                var sku = initSkus[i],
+                    propsName = sku.propertiesName,
+                    props = propsName.split(';');
+
+                for (var j in props) {
+                    var prop = props[j],
+                        parts = prop.split(':'),
+                        vid = parts[1],
+                        fname = parts[2],
+                        vname = parts[3];
+
+                    $('#saleattrs .attr_tit').each(function (index, element) {
+                        var $e = $(element),
+                            propName = $e.text().split(':')[0];
+
+                        if (fname[0] == propName[0] || fname.indexOf(propName) !== -1) {
+                            var alias = getPropsAlias(propsAlias, vid);
+
+                            if (alias === null) {
+                                alias = vname;
+                            }
+
+                            $e.siblings('.attr_cnt').find('span').each(function (i, e) {
+                                var $$e = $(e),
+                                allSpanText = $$e.text();
+
+                                if (allSpanText === alias) {
+                                    $$e.find('input').attr('checked', 'true');
+                                }
+                            });
+                        }
+                    });
+                }
+            }
+
+            createTable();
 
             // TODO: 填充货号
             $('#31813').val('{$khn}');
         }
     });
+
+    $('#saleattrs').on('click', 'input', createTable);
+
+    function createTable() {
+        var selectedSpecs = [],
+            table,
+            specExtendedAttrs = [{name: '库存编码', fname: 'code'}, {name: '价格(元)', fname: 'price'}, {name: '数量(件)', fname: 'amountOnSale'}, {name: '备注', fname: 'remark'}],
+            initSkus = {$initSkus},
+            propsAlias = '{$propsAlias}';
+
+        $('#saleattrs input:checked').each(function (index, element) {
+            var $e = $(element),
+                fid = $e.closest('li').attr('fid'),
+                value = $e.parent().text(),
+                isNewSpec = true;
+
+            for (var i in selectedSpecs) {
+                if (selectedSpecs[i]['fid'] == fid) {
+                    isNewSpec = false;
+                    selectedSpecs[i]['values'].push(value);
+                }
+            }
+
+            if (isNewSpec) {
+                var label = $e.closest('.attr_cnt').siblings('.attr_tit').text(),
+                    name = label.substr(0, label.length - 1);
+
+                selectedSpecs.push({fid: fid, name: name, values: [value]});
+            }
+        });
+
+        if (selectedSpecs.length > 0) {
+            table = new tradetable($('#divStockTableArea'), selectedSpecs, specExtendedAttrs, initSkus, propsAlias, '{$seePrice}');
+            table.removeAll();
+            table.createTable();
+        }
+    }
 
     $('#confirm').on('click', function () {
         var numFormat = 16,

@@ -93,6 +93,8 @@ class IndexAction extends Action {
             'rawPrice' => $price,
             'khn' => $khn,
             'catStr' => I('catStr'),
+            'initSkus' => json_encode(Util::parseSkus($taobaoItem->skus->sku)),
+            'propsAlias' => $taobaoItem->property_alias,
         ));
 
         $this->display();
