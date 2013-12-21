@@ -408,11 +408,11 @@ $(function () {
         $selectedLi.addClass('selected');
         if ($selectedLi.attr('leaf') == '1') {
             $('#gotoNext').removeClass('btn_confirm_unavilable');
-            $('#gotoNext').addClass('btn_confirm');
+            $('#gotoNext').addClass('btn_confirm').css('color', 'black');
             return;
         } else {
             $('#gotoNext').removeClass('btn_confirm');
-            $('#gotoNext').addClass('btn_confirm_unavilable');
+            $('#gotoNext').addClass('btn_confirm_unavilable').css('color', 'gray');
         }
         $.ajax({
             url: '{:U('Index/searchCategory')}',
