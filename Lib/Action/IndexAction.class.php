@@ -219,9 +219,10 @@ class IndexAction extends Action {
 
     // 登出
     public function signOut() {
+        $taobaoItemId = session('paipai_current_taobao_id');
         session(null);
         cookie(null);
-        U('Index/index', '', true, true, false);
+        U('Index/auth', array('taobaoItemId' => $taobaoItemId), true, true, false);
     }
 
 }
