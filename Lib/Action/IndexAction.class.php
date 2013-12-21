@@ -50,6 +50,8 @@ class IndexAction extends Action {
         $navigationId = I('navigationId');
         $taobaoItem = OpenAPI::getTaobaoItem(I('taobaoItemId'));
 
+        $imgsInDesc = $this->parseDescImages($taobaoItem->desc);
+
         $price = floatval($taobaoItem->price);
         $seePrice = '';
         $store = M('store');
@@ -95,9 +97,16 @@ class IndexAction extends Action {
             'catStr' => I('catStr'),
             'initSkus' => json_encode(Util::parseSkus($taobaoItem->skus->sku)),
             'propsAlias' => $taobaoItem->property_alias,
+            'imgsInDesc' => $imgsInDesc,
         ));
 
         $this->display();
+    }
+
+    private function parseDescImages($desc) {
+        $pattern="/<[img|IMG].*?src=[\'|\"](.*?(?:[\.gif|\.jpg]))[\'|\"].*?[\/]?>/";
+        preg_match_all($pattern, $desc, $matches);//带引号
+        return json_encode($matches[1]);
     }
 
     private function getKHN($title) {

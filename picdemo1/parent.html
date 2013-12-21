@@ -1,0 +1,67 @@
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head runat="server">
+<title>父窗体----录入信息</title>
+<style>
+.imgs{ border:1px solid #CCC; padding:10px; overflow:hidden;}
+.imgs img{width:160px;float:left; margin-right:7px;}
+</style>
+<script src="./js/jquery.min.js" type="text/javascript"></script>
+<script language="javascript">
+
+  $(function(){
+      
+      $("#changePic").click(function(){
+	      var parmName = $("#txtName").val();
+		  var parmAge = $("#txtAge").val();
+		  var parmPic = new Array();		  
+		  $.each($("#imgs img"),function(){
+		     parmPic.push($(this).attr("src"));
+		  });
+		  var arrArgs = new Array(parmName, parmAge,parmPic);
+		  var winSettings = "center:yes;resizable:no;dialogHeight:600px";
+		  //返回参数
+		  var arrArgs = window.showModalDialog("propic.php",arrArgs,winSettings);
+		  //下面的可以支持返回多个值[window.returnValue]
+		  if(arrArgs==null){
+		     alert("您没有更改主图!");
+		  }else{
+		    $("#txtName").val(arrArgs[0].toString());
+			$("#txtAge").val(arrArgs[1].toString());
+			$("#pic1").attr("src",arrArgs[2].toString());
+		    // window.location.reload(); 刷新父窗体
+	     }	  
+	  });  
+  
+  });
+</script>
+</head>
+<body>
+   <table>
+     <tr>
+       <td><label>姓名：</label></td>
+       <td><input type="text" value="" id="txtName" /></td>
+     </tr>
+     <tr>
+       <td><label>年龄：</label></td>
+       <td><input type="text" value="" id="txtAge" /></td>
+     </tr>
+     <tr valign="top">
+       <td><label>照片：</label></td>       
+       <td><img id="pic1" src="uploads/20130919104524663700.jpg" width="160"/></td>
+       <td><input id="changePic" type="button" value="更换主图"/></td>
+     </tr>
+   </table>
+   <h3>附件列表</h3>
+   <div id="imgs" class="imgs">         
+      <img src="uploads/20130919104524663700.jpg"/>
+      <img src="uploads/111.jpg"/>
+
+
+      <img src="http://tbphoto3.bababian.com/upload7/rtcd2013/201309/001137962343.jpg"/>
+      <img src="http://tbphoto3.bababian.com/upload7/rtcd2013/201309/001137962334.jpg"/>
+      <img src="http://tbphoto3.bababian.com/upload7/rtcd2013/201309/001137962368.jpg"/>
+      <img src="http://tbphoto3.bababian.com/upload7/rtcd2013/201309/001137962218.jpg"/>
+   
+   </div>
+</body>
+</html>

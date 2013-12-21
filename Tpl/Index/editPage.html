@@ -63,6 +63,9 @@
 body {
   margin-top: 30px;
 }
+.pic_preview .preview_pic {
+  height: auto;
+}
 </style>
   </head>
   <body>
@@ -320,26 +323,31 @@ body {
           <li class="firist">
             <div class="preview_pic" id="fileview1">
               <img class="preview_img" src="http://static.paipaiimg.com/upload/item_upload_pic_nopic.png" defaultsrc ="http://static.paipaiimg.com/upload/item_upload_pic_nopic.png" realurl="http://static.paipaiimg.com/upload/item_upload_pic_nopic.png" />
+              <a href="javascript:;" id="pic_change_1">更换主图</a>
             </div><!--p class="btn_upload" ><button type="button">上传图片</button><span id="uploadbutton"></span></p-->
           </li>
           <li>
             <div class="preview_pic" id="fileview2">
               <img class="preview_img" src="http://static.paipaiimg.com/upload/item_upload_pic_nopic.png"  defaultsrc ="http://static.paipaiimg.com/upload/item_upload_pic_nopic.png" realurl="http://static.paipaiimg.com/upload/item_upload_pic_nopic.png" />
+              <a href="javascript:;" id="pic_change_2">更换主图</a>
             </div><!--p class="btn_upload" ><button type="button">上传图片</button></p-->
           </li>
           <li>
             <div class="preview_pic" id="fileview3">
               <img class="preview_img" src="http://static.paipaiimg.com/upload/item_upload_pic_nopic.png"  defaultsrc ="http://static.paipaiimg.com/upload/item_upload_pic_nopic.png" realurl="http://static.paipaiimg.com/upload/item_upload_pic_nopic.png" />
+              <a href="javascript:;" id="pic_change_3">更换主图</a>
             </div><!--p class="btn_upload" ><button type="button">上传图片</button></p-->
           </li>
           <li>
             <div class="preview_pic" id="fileview4">
               <img class="preview_img" src="http://static.paipaiimg.com/upload/item_upload_pic_nopic.png"  defaultsrc ="http://static.paipaiimg.com/upload/item_upload_pic_nopic.png" realurl="http://static.paipaiimg.com/upload/item_upload_pic_nopic.png" />
+              <a href="javascript:;" id="pic_change_4">更换主图</a>
             </div><!--p class="btn_upload" ><button type="button">上传图片</button></p-->
           </li>
           <li>
             <div class="preview_pic" id="fileview5">
               <img class="preview_img" src="http://static.paipaiimg.com/upload/item_upload_pic_nopic.png"  defaultsrc ="http://static.paipaiimg.com/upload/item_upload_pic_nopic.png" realurl="http://static.paipaiimg.com/upload/item_upload_pic_nopic.png" />
+              <a href="javascript:;" id="pic_change_5">更换主图</a>
             </div><!--p class="btn_upload" ><button type="button">上传图片</button></p-->
           </li>
         </ul>
@@ -918,8 +926,6 @@ body {
 <!--[if !IE]>|xGv00|b6facc6c3fec5ade60bc74dec153333c<![endif]--><!--[if !IE]>|xGv00|b2d2dcdb69c853011f3704755e222b05<![endif]-->
 <import type="js" file="Js.stockManage" basepath="{$basepath}"/>
 <script>
-
-
 $(function () {
     window.profit = '{$profit}';
 
@@ -934,6 +940,23 @@ $(function () {
         $pic.attr('src', itemImgs[i]);
         $('#uploadPicInfo' + (i + 1)).val(itemImgs[i]);
     }
+
+    // 主图替换
+    var imgsInDesc = {$imgsInDesc};
+    $('.preview_img').siblings('a').click(function (event) {
+        var $a = $(event.target),
+            index = $a.attr('id').split('_')[2],
+            $preview = $a.siblings('.preview_img'),
+            result = window.showModalDialog('picdemo1/propic.php',
+                                            ['{$infoTitle}', $preview.attr('src'), imgsInDesc],
+                                            'center:yes;resizable:no;dialogHeight:600px;dialogWidth:1080px');
+        if (result == null) {
+            alert("您没有更改主图!若点击下一页不出现图片，请等待图片下载完成后再次点击更改主图按钮");
+        } else {
+            $preview.attr('src', result[2].toString());
+            $('#uploadPicInfo' + index).val(result[2].toString());
+        }
+    });
 
     $.ajax({
         url: '{:U('Index/getAttributeList')}',
