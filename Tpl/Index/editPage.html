@@ -32,6 +32,7 @@
     <script type="text/javascript"
             src="http://lib.sinaapp.com/js/jquery/1.7.2/jquery.min.js"></script>
     <import type="js" file="Js.ckeditor.ckeditor" basepath="{$basepath}"/>
+    <import type="js" file="Js.tradetable" basepath="{$basepath}"/>
 <style>
 .settings-container {
   width: 100%;
@@ -1001,48 +1002,6 @@ $(function () {
             $('#classAttrDiv').children().remove();
             $('#classAttrDiv').append(normalFeaturesString);
 
-            // 匹配sku
-            /*
-            var initSkus = {$initSkus},
-                propsAlias = '{$propsAlias}';
-
-            for (var i in initSkus) {
-                var sku = initSkus[i],
-                    propsName = sku.propertiesName,
-                    props = propsName.split(';');
-
-                for (var j in props) {
-                    var prop = props[j],
-                        parts = prop.split(':'),
-                        vid = parts[1],
-                        fname = parts[2],
-                        vname = parts[3];
-
-                    $('#saleattrs .attr_tit').each(function (index, element) {
-                        var $e = $(element),
-                            propName = $e.text().split(':')[0];
-
-                        if (fname[0] == propName[0] || fname.indexOf(propName) !== -1) {
-                            var alias = getPropsAlias(propsAlias, vid);
-
-                            if (alias === null) {
-                                alias = vname;
-                            }
-
-                            $e.siblings('.attr_cnt').find('span').each(function (i, e) {
-                                var $$e = $(e),
-                                allSpanText = $$e.text();
-
-                                if (allSpanText === alias) {
-                                    $$e.find('input').attr('checked', 'true');
-                                }
-                            });
-                        }
-                    });
-                }
-            }
-            */
-
             // TODO: 填充货号
             $('#31813').val('{$khn}');
         }
@@ -1163,6 +1122,61 @@ $(function () {
                 dom:$id("divStockArea"),
                 saleAttrs:saleAttrs
             });
+
+            setTimeout(matchSku, 500);
+        }
+    }
+
+    function matchSku() {
+        if ($('#divSaleAttrSelectorArea .attr_tit').length == 0) {
+            setTimeout(matchSku, 500);
+            return;
+        }
+
+        var initSkus = {$initSkus},
+            propsAlias = '{$propsAlias}';
+
+        for (var i in initSkus) {
+            var sku = initSkus[i],
+            propsName = sku.propertiesName,
+            props = propsName.split(';');
+
+            for (var j in props) {
+                var prop = props[j],
+                parts = prop.split(':'),
+                vid = parts[1],
+                fname = parts[2],
+                vname = parts[3];
+
+                $('#divSaleAttrSelectorArea .attr_tit').each(function (index, element) {
+                    var $e = $(element),
+                    propName = $.trim($e.text()).split('：')[0];
+
+                    if (fname[0] == propName[0] || fname.indexOf(propName) !== -1) {
+                        var alias = getPropsAlias(propsAlias, vid);
+
+                        if (alias === null) {
+                            alias = vname;
+                        }
+
+                        $e.siblings('.attr_cnt').find('input[type=checkbox]').each(function (i, e) {
+                            var $$e = $(e),
+                                $span = $$e.siblings('span'),
+                                text = $.trim($span.text());
+
+                            if (text === alias) {
+                                if (!$$e[0].checked) {
+                                    $$e.click();
+                                    $('input.inp-01[stype=stockId]').val({$khn});
+                                    $('input.inp-02[stype=price]').val({$stockPrice});
+                                    $('input.inp-02[stype=num]').val(sku.quantity);
+                                    $('input.inp-01, input.inp-02').blur();
+                                }
+                            }
+                        });
+                    }
+                });
+            }
         }
     }
 });
