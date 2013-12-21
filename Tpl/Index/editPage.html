@@ -32,7 +32,6 @@
     <script type="text/javascript"
             src="http://lib.sinaapp.com/js/jquery/1.7.2/jquery.min.js"></script>
     <import type="js" file="Js.ckeditor.ckeditor" basepath="{$basepath}"/>
-    <import type="js" file="Js.tradetable" basepath="{$basepath}"/>
 <style>
 .settings-container {
   width: 100%;
@@ -69,6 +68,7 @@ body {
     <form name="mainform" class="mainform" action="{:U('Index/addItem')}" method="POST">
       <input type="hidden" name="navigationId" value="{$navigationId}"/>
       <input type="hidden" name="attr" id="attr" value=""/>
+      <input type="hidden" name="stockList" id="stockList" value=""/>
 <div class="settings-container">
   <div class="settings">
     <span>设置:</span>
@@ -234,13 +234,50 @@ body {
 <div class="bd stock" id="stockShowFrame_1">
   <div class="fm_tit">商品库存：</div>
   <div class="fm_cnt">
-    <div><input type="checkbox" name="stockSwitch" id="stockSwitch"><label for="stockSwitch">启用库存配置</label>&nbsp;&nbsp;<a href="http://help.paipai.com/content/help_30122.shtml" target="_blank">查看使用帮助&gt;&gt;</a><font color="#FF0000"></font></div>
+    <div><input type="checkbox" name="stockSwitch" id="stockSwitch" checked="true"><label for="stockSwitch">启用库存配置</label>&nbsp;&nbsp;<a href="http://help.paipai.com/content/help_30122.shtml" target="_blank">查看使用帮助&gt;&gt;</a><font color="#FF0000"></font></div>
     <div id="divStockArea">
       <div id="divSaleAttrSelectorArea">
         <ul class="attr_list attr_list_compact tb_colors" id="saleattrs"></ul>
       </div>
-      <div id="divStockTableArea" class="item-list">
-      </div>
+      <!--div id="divStockTableArea" class="item-list">
+      </div-->
+      <table class="table_aip"  style="width:750px">
+        <colgroup>
+            <col width="10%">
+            <col width="90%">
+        </colgroup>
+        <tbody>
+            <tr>
+                <th>商品类目：</th>
+                <td><strong class="strong">*</strong> <!--
+                        <select name="jumpMenu" id="jumpMenu" onchange="MM_jumpMenu('parent',this,0)">
+                          <option>请选择</option>
+                        </select>
+                        --> <span id="clzPanel0"></span></td>
+            </tr>
+            <tr>
+                <th>库存填写：</th>
+                <td></td>
+            </tr>
+            <tr>
+                <td colspan=2>
+                    <div class="fm_cnt" style="border-left:none"><div id="divStockArea"></div></div>
+                </td>
+            </tr>
+            <tr>
+                <th></th>
+                <td><input id="btnSubmit" type="button" value="生成属性串" /></td>
+            </tr>
+            <tr>
+                <th></th>
+                <td>
+                <p class="msg-para-right" id="msgOk"><span class="msg0-icon-right"></span><strong
+                    class="msg-title">恭喜！</strong> <span class="msg-para-hint"></span>库存串串计算成功</p>
+                <p class="msg-para-warn" id="msgErr"><span class="msg0-icon-warn"></span><strong class="msg-title">错误！</strong> <span class="msg-para-hint"></span><label id=errMessage>属性串生成错误请检查。</label></p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
     </div>
     <!--<div class="upload_tips" style="margin: 5px 20px 10pt 0;"><img class="upload_tips_icon" src="http://static.paipaiimg.com/module/b.png"><em style="color:#FF5500">【新功能】分库存属性可独立修改了。采用独立修改的方式，将不会影响下面库存属性表中的信息。赶快试用吧！</em><a href="http://bbs.paipai.com/thread-2148477-1-1.html" target="_blank" tag="new_feature_tips" nft_id="20120514001" top="20" left="-144">查看说明</a></div>
         <div class="stock_area" id="stockArea"></div>
@@ -878,12 +915,16 @@ body {
 <span style="display: none"><span id="tempid">none</span></span>
 <!--[if !IE]>|xGv00|99cd0c66222cfdf22f16394ab64db653<![endif]-->
 <!--[if !IE]>|xGv00|b6facc6c3fec5ade60bc74dec153333c<![endif]--><!--[if !IE]>|xGv00|b2d2dcdb69c853011f3704755e222b05<![endif]-->
+<import type="js" file="Js.stockManage" basepath="{$basepath}"/>
 <script>
+
+
 $(function () {
     window.profit = '{$profit}';
 
     var navigationId = '{$navigationId}',
-        editor = CKEDITOR.replace('sDesc');
+        editor = CKEDITOR.replace('sDesc'),
+        stockObj = null;
 
     // 填充主图
     var itemImgs = {$itemImgs};
@@ -901,6 +942,8 @@ $(function () {
         success: function (data) {
             var normalFeaturesString = '', specFeaturesString = '',
                 attrList = data.attrList;
+
+            getAttributeListSuccess(data);
 
             for (var i in attrList) {
                 var featuresString = '';
@@ -949,7 +992,7 @@ $(function () {
                 featuresString += '</li>';
 
                 if (feature.saleAttr == 1) {
-                    specFeaturesString += featuresString;
+
                 } else {
                     normalFeaturesString += featuresString;
                 }
@@ -957,9 +1000,9 @@ $(function () {
 
             $('#classAttrDiv').children().remove();
             $('#classAttrDiv').append(normalFeaturesString);
-            $('#saleattrs').append(specFeaturesString);
 
             // 匹配sku
+            /*
             var initSkus = {$initSkus},
                 propsAlias = '{$propsAlias}';
 
@@ -998,50 +1041,12 @@ $(function () {
                     });
                 }
             }
-
-            createTable();
+            */
 
             // TODO: 填充货号
             $('#31813').val('{$khn}');
         }
     });
-
-    $('#saleattrs').on('click', 'input', createTable);
-
-    function createTable() {
-        var selectedSpecs = [],
-            table,
-            specExtendedAttrs = [{name: '库存编码', fname: 'code'}, {name: '价格(元)', fname: 'price'}, {name: '数量(件)', fname: 'amountOnSale'}, {name: '备注', fname: 'remark'}],
-            initSkus = {$initSkus},
-            propsAlias = '{$propsAlias}';
-
-        $('#saleattrs input:checked').each(function (index, element) {
-            var $e = $(element),
-                fid = $e.closest('li').attr('fid'),
-                value = $e.parent().text(),
-                isNewSpec = true;
-
-            for (var i in selectedSpecs) {
-                if (selectedSpecs[i]['fid'] == fid) {
-                    isNewSpec = false;
-                    selectedSpecs[i]['values'].push(value);
-                }
-            }
-
-            if (isNewSpec) {
-                var label = $e.closest('.attr_cnt').siblings('.attr_tit').text(),
-                    name = label.substr(0, label.length - 1);
-
-                selectedSpecs.push({fid: fid, name: name, values: [value]});
-            }
-        });
-
-        if (selectedSpecs.length > 0) {
-            table = new tradetable($('#divStockTableArea'), selectedSpecs, specExtendedAttrs, initSkus, propsAlias, '{$seePrice}');
-            table.removeAll();
-            table.createTable();
-        }
-    }
 
     $('#confirm').on('click', function () {
         var numFormat = 16,
@@ -1083,6 +1088,40 @@ $(function () {
         }
 
         $('#attr').val(attrString);
+
+        /* stockList */
+        if ($('#stockSwitch').val() == 'on') {
+            var msg="";
+            if(!stockObj){
+                msg="请先选择品类";
+            }else{
+                var ret=stockObj.check();
+                if(ret.err){
+                    msg = ret.errMsg;
+                }
+            }
+
+            if(msg!=""){
+                $('#errMessage').text(msg);
+                alert(msg);
+                //$('#msgErr').show();
+                //$('#msgOk').hide();
+                return false;
+            }
+
+            var stockList=stockObj.getStockList();
+            for(var i=0;i<stockList.length;i++){
+                stockList[i].price=parseInt(stockList[i].price*100,10)+"";
+            }
+
+            //生成库存属性串
+            eval("$('#stockList').val('"+JSON.stringify(stockList)+"');");
+            //eval("that.stockJsonDom.value='"+JSON.stringify(stockList)+"';");
+            //展示OK
+            //$('#msgErr').hide();
+            //$('#msgOk').show();
+        }
+        /* end stockList */
     });
 
     $('#updateProfitLink').click(function () {
@@ -1100,6 +1139,32 @@ $(function () {
             }
         });
     });
+
+    function getAttributeListSuccess(getAttributeList) {
+        if(getAttributeList.attrId=='0') {
+            var saleAttrs = [];
+            var attrList = getAttributeList.attrList;
+            for(var i=0;i<attrList.length;i++) {
+                if(!!(attrList[i].property&0x10000)) {
+
+                    attrList[i].id=attrList[i].attrId;
+                    attrList[i].name=attrList[i].attrName;
+                    var opList=[];
+                    for(var j=0;j<attrList[i].optionList.length;j++){
+                        var opt = attrList[i].optionList[j];
+                        opList.push([opt.optionId,opt.optionValue]);
+                    }
+                    attrList[i].opList=opList;
+                    saleAttrs.push(attrList[i]);
+                }
+            }
+
+            stockObj=$stockManageNew({
+                dom:$id("divStockArea"),
+                saleAttrs:saleAttrs
+            });
+        }
+    }
 });
 </script>
 </body>

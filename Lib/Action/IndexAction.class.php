@@ -139,7 +139,13 @@ class IndexAction extends Action {
         $itemAttrs['sellerPayFreight'] = 1;
         $itemAttrs['freightId'] = 0;
         $itemAttrs['stockPrice'] = floatval(I('dwPrice_bin')) * 100;
-        $itemAttrs['stockCount'] = 100;
+        $itemAttrs['stockCount'] = 1000;
+
+        if (I('stockSwitch') == 'on') {
+            unset($itemAttrs['stockPrice']);
+            unset($itemAttrs['stockCount']);
+            $itemAttrs['stockJsonList'] = $_REQUEST['stockList'];
+        }
 
         /* auto off */
         $autoOff = I('autoOff');
