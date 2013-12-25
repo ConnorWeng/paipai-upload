@@ -55,9 +55,13 @@ class IndexAction extends Action {
         $price = floatval($taobaoItem->price);
         $seePrice = '';
         $store = M('store');
+        $shopMall = '';
+        $address = '';
         $storeInfo = $store->where('im_ww="'.$taobaoItem->nick.'"')->find();
         if ($storeInfo && $store != null) {
             $seePrice = $storeInfo['see_price'];
+            $shopMall = $storeInfo['shop_mall'];
+            $address = $storeInfo['address'];
         }
         if ($seePrice == '减半') {
             $price = $price / 2.0;
@@ -98,6 +102,7 @@ class IndexAction extends Action {
             'initSkus' => json_encode(Util::parseSkus($taobaoItem->skus->sku)),
             'propsAlias' => $taobaoItem->property_alias,
             'imgsInDesc' => $imgsInDesc,
+            'businessCode' => $shopMall.$address.'_P'.$price.'_'.$khn.'#',
         ));
 
         $this->display();
