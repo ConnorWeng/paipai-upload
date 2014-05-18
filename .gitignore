@@ -28,3 +28,5 @@ local.properties
 # project
 Upload/**
 Runtime/**
+ThinkPHP/**
+picdemo1/**
