@@ -424,7 +424,7 @@ $(function () {
 
                 for (var i = 0; i < childList.length; i++) {
                     var c = childList[i];
-                    if (navigationId != '' || (c.navigationId == '22001' || c.navigationId == '20501')) {
+                    if (navigationId != '' || isCategoryNeeded(c.navigationId)) {
                         itemsString += '<li cid="' + c.navigationId + '" leaf="' + c.isClass + '" level="' + level + '">';
                         if (c.isClass == '1') {
                             itemsString += '<span>' + c.navigationName + '</span>';
@@ -443,6 +443,14 @@ $(function () {
                 $('#sortShowC' + level).removeClass('blank');
             }
         });
+    }
+
+    function isCategoryNeeded(id) {
+        var neededIds = ['22001', '20501', '6017', '21036', '211681', '22501', '27158', '34167', '34527', '35737', '233601'];
+        for (var index in neededIds) {
+            if (id === neededIds[index]) return true;
+        }
+        return false;
     }
 });
 </script>
