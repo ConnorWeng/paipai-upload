@@ -92,12 +92,60 @@ class OpenAPI {
 
     public static function uploadItemStockImage($itemCode, $pic) {
         $sdk = self::getSdk();
-        $sdk->setApiPath('/item/uploadItemStockImage');
+        $sdk->setApiPath('/item/uploadItemStockImage.xhtml');
         $params = &$sdk->getParams();
         $params['pureData'] = 1;
         $params['itemCode'] = $itemCode;
         $params['pic'] = $pic;
 
+        return self::invoke($sdk);
+    }
+
+    public static function uploadPaiPaiAlbumImage($path, $pic, $fileName) {
+        $sdk = self::getSdk();
+        $sdk->setApiPath('/album/uploadPaiPaiAlbumImage.xhtml');
+        $params = &$sdk->getParams();
+        $params["appOAuthID"] = $sdk->getAppOAuthID();
+        $params["accessToken"] = $sdk->getAccessToken();
+        $params["uin"] = $sdk->getUin();
+        $params["format"] = $sdk->getFormat();
+        $params["charset"] = $sdk->getCharset();
+        $params['pureData'] = 1;
+        $params['path'] = $path;
+        $params['fileName'] = $fileName;
+        $sign = $sdk->makeSign($sdk->getMethod(), $sdk->getAppOAuthkey()."&");
+        $params['sign'] = $sign;
+        $url = 'http://'.$sdk->getHostName().$sdk->getApiPath().'?charset='.$params['charset'].'&';
+        unset($params['charset']);
+        $params['pic'] = $pic;
+
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $params);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        $data = curl_exec($ch);
+        curl_close($ch);
+
+        return json_decode($data);
+    }
+
+    public static function getPaiPaiAlbumList() {
+        $sdk = self::getSdk();
+        $sdk->setApiPath('/album/getPaiPaiAlbumList.xhtml');
+        $params = &$sdk->getParams();
+        $params['pureData'] = 1;
+        $params['path'] = '/';
+        return self::invoke($sdk);
+    }
+
+    public static function createPaiPaiAlbumDir() {
+        $sdk = self::getSdk();
+        $sdk->setApiPath('/album/createPaiPaiAlbumDir.xhtml');
+        $params = &$sdk->getParams();
+        $params['pureData'] = 1;
+        $params['path'] = '/';
+        $params['newDirName'] = 'paipai-upload-51zwd';
         return self::invoke($sdk);
     }
 
@@ -140,7 +188,6 @@ class OpenAPI {
             echo('<h6 style="color:red;">错误:'.$resp->msg.'</h6>');
         }
     }
-
 }
 
 ?>

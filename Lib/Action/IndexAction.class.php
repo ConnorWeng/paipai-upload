@@ -149,7 +149,7 @@ class IndexAction extends Action {
         $itemAttrs['classId'] = I('navigationId');
         $itemAttrs['validDuration'] = 1209600;
         $itemAttrs['itemState'] = 'IS_FOR_SALE';
-        $itemAttrs['detailInfo'] = $_REQUEST['sDesc'];
+        $itemAttrs['detailInfo'] = $this->movePic($_REQUEST['sDesc']);
         $itemAttrs['sellerPayFreight'] = 1;
         $itemAttrs['freightId'] = 0;
         $itemAttrs['stockPrice'] = floatval(I('dwPrice_bin')) * 100;
@@ -230,4 +230,33 @@ class IndexAction extends Action {
         U('Index/auth', array('taobaoItemId' => $taobaoItemId), true, true, false);
     }
 
+    private function movePic($detailInfo) {
+        $pathId = $this->getAlbumPathID();
+        $pattern="/<[img|IMG].*?src=[\'|\"](.*?(?:[\.jpg|\.JPG]))[\'|\"].*?[\/]?>/";
+        preg_match_all($pattern, $detailInfo, $matches);
+        $picNum = count($matches[0]);
+        for($i=0;$i< $picNum ;$i++) {
+            $picUrl = $matches[1][$i];
+            $localImagePath = OpenAPI::downloadImage($picUrl);
+            $localImage = '@'.$localImagePath;
+            $newUrl = OpenAPI::uploadPaiPaiAlbumImage($pathId, $localImage, uniqid().'.jpg')->Pictures[0]->URL;
+            $detailInfo = str_replace($picUrl, $newUrl, $detailInfo);
+            unlink($localImagePath);
+        }
+        return $detailInfo;
+    }
+
+    private function getAlbumPathID() {
+        $album = OpenAPI::getPaiPaiAlbumList();
+        $directories = $album->directories;
+        $dirCount = count($directories);
+        for ($i = 0; $i < $dirCount; $i++) {
+            $dir = $directories[$i];
+            if (strpos($dir->Name, 'paipai-upload-51zwd') !== false) {
+                return '/'.$dir->ID.'/';
+            }
+        }
+        $createDirResult = OpenAPI::createPaiPaiAlbumDir()->AlbumCreateDirResult;
+        return '/'.$createDirResult->pathId.'/';
+    }
 }
