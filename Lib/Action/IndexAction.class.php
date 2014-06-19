@@ -103,6 +103,7 @@ class IndexAction extends Action {
             'propsAlias' => $taobaoItem->property_alias,
             'imgsInDesc' => $imgsInDesc,
             'businessCode' => $shopMall.$address.'_P'.$price.'_'.$khn.'#',
+            'movePic' => $this->isMovePicNeeded($taobaoItem->desc),
         ));
 
         $this->display();
@@ -258,5 +259,18 @@ class IndexAction extends Action {
         }
         $createDirResult = OpenAPI::createPaiPaiAlbumDir()->AlbumCreateDirResult;
         return '/'.$createDirResult->pathId.'/';
+    }
+
+    private function isMovePicNeeded($detailInfo) {
+        $pattern="/<[img|IMG].*?src=[\'|\"](.*?(?:[\.jpg|\.JPG]))[\'|\"].*?[\/]?>/";
+        preg_match_all($pattern, $detailInfo, $matches);
+        $picNum = count($matches[0]);
+        for($i=0;$i< $picNum ;$i++) {
+            $picUrl = $matches[1][$i];
+            if (strpos($picUrl, 'taobaocdn') !== false) {
+                return true;
+            }
+        }
+        return false;
     }
 }

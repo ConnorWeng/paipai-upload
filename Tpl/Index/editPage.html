@@ -160,7 +160,14 @@ body {
       </div>
     </div-->
     <!-- e inc_first_head_sim ppms -->
-    <div style="width: 920px; margin: 0 auto; text-align: right;"><span>{$memberId} | </span><a href="{:U('Index/signOut')}">退出</a></div>
+    <if condition="$movePic">
+      <div style="width: 920px; margin: 0 auto; color: red; text-align: center; background: #fffae3; border: 1px solid #f1e38b; font-size: 13pt;">
+        <span>该宝贝详情图片来源为淘宝，所以会自动开启“图片搬家”功能，点击上传后浏览器可能会无响应，需等待1～3分钟</span>
+      </div>
+    </if>
+    <div style="width: 920px; margin: 0 auto; text-align: right;">
+      <span>{$memberId} | </span><a href="{:U('Index/signOut')}">退出</a>
+    </div>
     <!-- S setp -->
     <div class="flow_step_no2 flow_step_no0_n">
       <div class="flow_step" style="margin-top:10px;">
