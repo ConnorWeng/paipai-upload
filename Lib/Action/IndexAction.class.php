@@ -50,6 +50,7 @@ class IndexAction extends Action {
         $navigationId = I('navigationId');
         $taobaoItem = OpenAPI::getTaobaoItem(I('taobaoItemId'));
 
+        $propsArray = $this->makePropsArray($taobaoItem->props_name.'');
         $imgsInDesc = $this->parseDescImages($taobaoItem->desc);
 
         $price = floatval($taobaoItem->price);
@@ -104,6 +105,7 @@ class IndexAction extends Action {
             'imgsInDesc' => $imgsInDesc,
             'businessCode' => $shopMall.$address.'_P'.$price.'_'.$khn.'#',
             'movePic' => $this->isMovePicNeeded($taobaoItem->desc),
+            'propsArray' => $propsArray,
         ));
 
         $this->display();
@@ -272,5 +274,25 @@ class IndexAction extends Action {
             }
         }
         return false;
+    }
+
+    private function makePropsArray($propsName) {
+        $result = array();
+        $propsNameArray = split(';', $propsName);
+        foreach ($propsNameArray as $propStr) {
+            $prop = split(':', $propStr);
+            $found = false;
+            for ($i = 0; $i < count($result); $i++) {
+                $propArray = $result[$i];
+                if ($propArray['name'] == $prop[2]) {
+                    $result[$i] = array('name' => $prop[2], 'value' => $propArray['value'].','.$prop[3]);
+                    $found = true;
+                }
+            }
+            if (!$found) {
+                array_push($result, array('name' => $prop[2], 'value' => $prop[3]));
+            }
+        }
+        return $result;
     }
 }

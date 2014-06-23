@@ -162,7 +162,7 @@ class OpenAPI {
         $c->appkey = C('taobao_app_key');
         $c->secretKey = C('taobao_secret_key');
         $req = new ItemGetRequest;
-        $req->setFields("title,desc,pic_url,sku,item_weight,property_alias,price,item_img.url,cid,nick");
+        $req->setFields("title,desc,pic_url,sku,item_weight,property_alias,price,item_img.url,cid,nick,props_name,prop_img,props");
         $req->setNumIid($numIid);
         $resp = $c->execute($req, null);
 

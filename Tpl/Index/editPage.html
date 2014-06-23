@@ -66,9 +66,61 @@ body {
 .pic_preview .preview_pic {
   height: auto;
 }
+.taobao-ref-hider {
+  top: 10%;
+  right: 240px;
+  width: 20px;
+  position: fixed;
+  background: #FFD98D;
+  color: #FF6600;
+  cursor: pointer;
+}
+.taobao-ref {
+  /*top: 350px;*/
+  top: 10%;
+  right: 0px;
+  width: 240px;
+  background: #fffae3;
+  border: 1px solid #f1e38b;
+  text-align: left;
+  position: fixed;
+}
+.taobao-ref h4 {
+  text-align: center;
+  background: #FFD98D;
+  color: #FF6600;
+}
+.taobao-ref p {
+  color: gray;
+}
+.ref-left {
+  width: 100px;
+  text-align: right;
+  padding-right: 10px;
+  float:left;
+}
+.ref-right {
+  width: 100px;
+  float:left;
+  text-align: left;
+}
 </style>
   </head>
   <body>
+
+    <div class="taobao-ref-hider">
+      隐藏
+    </div>
+    <div class="taobao-ref">
+      <h4>淘宝属性信息参考</h4>
+      <p>由于淘宝网的属性字段和拍拍网不太一样，所以属性请自行比对选择，这里提供参考。如果没有你要的属性，请上传宝贝后到拍拍后台修改。敬请谅解！</p>
+      <ul>
+        <foreach name="propsArray" item="prop">
+          <li><div class="ref-left">{$prop.name}:</div><div class="ref-right">{$prop.value}</div></li>
+        </foreach>
+      </ul>
+    </div>
+
     <form name="mainform" class="mainform" action="{:U('Index/addItem')}" method="POST">
       <input type="hidden" name="navigationId" value="{$navigationId}"/>
       <input type="hidden" name="attr" id="attr" value=""/>
@@ -940,6 +992,13 @@ $(function () {
     var navigationId = '{$navigationId}',
         editor = CKEDITOR.replace('sDesc'),
         stockObj = null;
+
+    $('.taobao-ref-hider').on('click', function () {
+        var state = $('.taobao-ref').css('display') == 'block' ? 'none' : 'block',
+            position = $('.taobao-ref-hider').css('right') == '240px' ? '0px' : '240px';
+        $('.taobao-ref').css('display', state);
+        $('.taobao-ref-hider').css('right', position).text(position == '0px' ? '淘宝属性信息参考' : '隐藏');
+    });
 
     // 填充主图
     var itemImgs = {$itemImgs};
